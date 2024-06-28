@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from "styled-components"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/login/Login';
+import BookRentStatus from './components/admin/BookRentStatus';
 
 function App() {
     return (
@@ -10,7 +11,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login />} />
-                    <Route path="/admin" />
+                    <Route path="/admin" element={<BookRentStatus />} />
                 </Routes>
             </BrowserRouter>
         </>
