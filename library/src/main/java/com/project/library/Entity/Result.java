@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class ResultAPI {
+public class Result {
     private boolean result; //결과 값
     private Map<String, Object> resultMap; //결과
 }
