@@ -9,12 +9,12 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [id, setId] = useState();
-    const [pw, setPw] = useState();
+    const [pwd, setPwd] = useState();
 
     const checkLogin = () => {
-        axios.post("/loginAdmin", {
-            id: "admin",
-            pw: "a12345",
+        axios.post('/loginAdmin', {
+            id: id,
+            pwd: pwd
         }).then(response => {
             console.log("데이터 확인 성공")
             navigate("/admin");
@@ -22,7 +22,6 @@ const Login = () => {
             console.log("데이터 확인 실패")
         })
     }
-
 
     return (
         <>
@@ -52,8 +51,8 @@ const Login = () => {
 
                             <PasswordInput
                                 type="password"
-                                value={pw}
-                                onChange={(e) => setPw(e.target.value)}
+                                value={pwd}
+                                onChange={(e) => setPwd(e.target.value)}
                             />
                         </PasswordBind>
 
