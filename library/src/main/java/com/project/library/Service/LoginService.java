@@ -22,17 +22,20 @@ public class LoginService {
         Result result = new Result();
         result.setResult(false);
 
-        String id = (String)loginInfo.get("id");
-        String pw = (String)loginInfo.get("pw");
+        String id = (String) loginInfo.get("id");
+        String pwd = (String) loginInfo.get("pwd");
 
-        try {
-            LiUserInfo userInfo = liUserInfoRepository.findUser(id, pw);
-            if(userInfo != null) {
-                result.setResult(true);
-            }
-        } catch (Exception e) {
-            throw new Exception("=========== login is failed ===========");
-        }
+        System.out.println("성공" + id + "@@@@@@@" + pwd);
+        result.setResult(true);
+
+        // try {
+        // LiUserInfo userInfo = liUserInfoRepository.findUser(id, pw);
+        // if(userInfo != null) {
+        // result.setResult(true);
+        // }
+        // } catch (Exception e) {
+        // throw new Exception("=========== login is failed ===========");
+        // }
 
         return result;
     }

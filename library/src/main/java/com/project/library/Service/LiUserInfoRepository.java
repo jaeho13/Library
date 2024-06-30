@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
 
-    @Query(value = "SELECT * FROM LI_USER_INFO WHERE ID = :id AND PW = :pw" , nativeQuery = true)
-    LiUserInfo findUser(@Param(value = "id") String id, @Param(value = "pw") String pw);
+    @Query(value = "SELECT * FROM LI_USER_INFO WHERE ID = :id AND PWD = :pwd", nativeQuery = true)
+    LiUserInfo findUser(@Param(value = "id") String id, @Param(value = "pwD") String pwd);
 }

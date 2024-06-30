@@ -17,8 +17,8 @@ public class LiUserInfo {
     @Column(name = "ID")
     private String id;
 
-    @Column(name = "PW")
-    private String pw;
+    @Column(name = "PWD")
+    private String pwd;
 
     @Column(name = "NAME")
     private String name;
