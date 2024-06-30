@@ -1,13 +1,26 @@
-import React from "react";
-import styled from "styled-components";
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import styled from "styled-components";
+// import { LoginBind, LibraryLogo, AccountCheck, InputBind, IdBind, PasswordBind, IdName, IdInput, PasswordName, PasswordInput, IdC } from "./styles/LoginStyle";
 
 const Login = () => {
 
     const navigate = useNavigate();
 
-    const pageLogin = () => {
-        navigate("/admin")
+    const [id, setId] = useState();
+    const [pw, setPw] = useState();
+
+    const checkLogin = () => {
+        axios.post("/loginAdmin", {
+            id: "admin",
+            pw: "a12345",
+        }).then(response => {
+            console.log("데이터 확인 성공")
+            navigate("/admin");
+        }).catch(error => {
+            console.log("데이터 확인 실패")
+        })
     }
 
 
@@ -19,14 +32,17 @@ const Login = () => {
                 </LibraryLogo>
                 <AccountCheck>
                     <InputBind>
+
                         <IdBind>
                             <IdName>
                                 아이디
                             </IdName>
 
-                            <IdInput>
-
-                            </IdInput>
+                            <IdInput
+                                type="text"
+                                value={id}
+                                onChange={(e) => setId(e.target.value)}
+                            />
                         </IdBind>
 
                         <PasswordBind>
@@ -34,15 +50,16 @@ const Login = () => {
                                 비밀번호
                             </PasswordName>
 
-                            <PasswordInput>
-
-                            </PasswordInput>
+                            <PasswordInput
+                                type="password"
+                                value={pw}
+                                onChange={(e) => setPw(e.target.value)}
+                            />
                         </PasswordBind>
-
 
                     </InputBind>
 
-                    <IdCheck>
+                    <IdCheck onClick={checkLogin}>
                         확인
                     </IdCheck>
                 </AccountCheck>
