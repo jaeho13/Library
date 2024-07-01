@@ -1,5 +1,6 @@
 package com.project.library.Service;
 
+import com.project.library.Entity.LiUserInfo;
 import com.project.library.Entity.Result;
 import com.project.library.Repository.LiUserInfoRepository;
 import lombok.extern.log4j.Log4j2;
@@ -22,17 +23,15 @@ public class LoginService {
         String id = (String) loginInfo.get("id");
         String pwd = (String) loginInfo.get("pwd");
 
-        System.out.println("성공" + id + "@@@@@@@" + pwd);
-        result.setResult(true);
 
-        // try {
-        // LiUserInfo userInfo = liUserInfoRepository.findUser(id, pw);
-        // if(userInfo != null) {
-        // result.setResult(true);
-        // }
-        // } catch (Exception e) {
-        // throw new Exception("=========== login is failed ===========");
-        // }
+         try {
+            LiUserInfo userInfo = liUserInfoRepository.findUser(id, pwd);
+            if(userInfo != null) {
+                result.setResult(true);
+            }
+         } catch (Exception e) {
+         throw new Exception("=========== login is failed ===========");
+         }
 
         return result;
     }

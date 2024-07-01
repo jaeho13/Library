@@ -22,11 +22,10 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping("/login")
+    @PostMapping("/loginAdmin")
     @Operation(summary = "로그인",description = "Admin/User 로그인 API")
     @Parameter(name="id", description = "아이디", required = true)
     @Parameter(name="pw", description = "비밀번호", required = true)
-    @Parameter(name="type", description = "관리자/사용자", required = true)
     public Result login(@RequestBody Map<String, Object> loginInfo) throws Exception{
         Result result = loginService.login(loginInfo);
 
