@@ -8,16 +8,20 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const [id, setId] = useState();
-    const [pwd, setPwd] = useState();
+    const [id, setId] = useState("");
+    const [pwd, setPwd] = useState("");
 
     const checkLogin = () => {
         axios.post('/loginAdmin', {
             id: id,
             pwd: pwd
         }).then(response => {
-            console.log("데이터 확인 성공")
-            navigate("/admin");
+            if (response.data.result) {
+                console.log("데이터 확인 성공")
+                navigate("/admin");
+            } else {
+                alert("아이디 비밀번호를 확인해주세요.")
+            }
         }).catch(error => {
             console.log("데이터 확인 실패")
         })
@@ -41,6 +45,7 @@ const Login = () => {
                                 type="text"
                                 value={id}
                                 onChange={(e) => setId(e.target.value)}
+                                placeholder="id"
                             />
                         </IdBind>
 
@@ -53,6 +58,7 @@ const Login = () => {
                                 type="password"
                                 value={pwd}
                                 onChange={(e) => setPwd(e.target.value)}
+                                placeholder="password"
                             />
                         </PasswordBind>
 
