@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@RestController
 @RequiredArgsConstructor
+@RestController
 @Log4j2
-@CrossOrigin(origins = "*")
 @Tag(name = "Login", description = "Login Admin/User API")
 public class LoginController {
     // http://localhost:8080/swagger-ui/index.html#/Login/login
@@ -23,19 +22,14 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping("/loginAdmin")
-    @Operation(summary = "로그인", description = "Admin/User 로그인 API")
-    @Parameter(name = "id", description = "아이디", required = true)
-    @Parameter(name = "pwd", description = "비밀번호", required = true)
-    @Parameter(name = "type", description = "관리자/사용자", required = true)
-    public Result login(@RequestBody Map<String, Object> loginInfo) throws Exception {
+    @PostMapping("/login")
+    @Operation(summary = "로그인",description = "Admin/User 로그인 API")
+    @Parameter(name="id", description = "아이디", required = true)
+    @Parameter(name="pw", description = "비밀번호", required = true)
+    @Parameter(name="type", description = "관리자/사용자", required = true)
+    public Result login(@RequestBody Map<String, Object> loginInfo) throws Exception{
         Result result = loginService.login(loginInfo);
 
         return result;
-    }
-
-    @PostMapping("/test")
-    public void test() {
-        System.out.println("성공");
     }
 }
