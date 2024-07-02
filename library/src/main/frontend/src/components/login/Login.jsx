@@ -18,9 +18,9 @@ const Login = () => {
         }).then(response => {
             if (response.data.result) {
                 console.log("데이터 확인 성공")
-                navigate("/admin");
+                navigate("/admin/rent");
             } else {
-                alert("아이디 비밀번호를 확인해주세요.")
+                alert("아이디 비밀번호를 확인해 주세요.")
             }
         }).catch(error => {
             console.log("데이터 확인 실패")
