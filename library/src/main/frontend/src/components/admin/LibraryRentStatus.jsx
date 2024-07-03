@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PracChart from "./chart/PracChart";
 
 const LibraryRentStatus = () => {
     return (
@@ -10,20 +11,24 @@ const LibraryRentStatus = () => {
                 </PageName>
             </TopMenu>
 
+            <Main>
 
-            <LeftMenu>
-                <LeftRentStatus>
+                <LeftMenu>
+                    <LeftRentStatus>
 
-                </LeftRentStatus>
+                    </LeftRentStatus>
 
-                <LeftBookStatus>
+                    <LeftBookStatus>
 
-                </LeftBookStatus>
+                    </LeftBookStatus>
 
-                <LeftUserStatus>
+                    <LeftUserStatus>
 
-                </LeftUserStatus>
-            </LeftMenu>
+                    </LeftUserStatus>
+                </LeftMenu>
+
+                <PracChart />
+            </Main>
         </>
     )
 }
@@ -49,6 +54,12 @@ const PageName = styled.div`
     background-color: black;
     color: white;
     font-size: 1.5rem;
+`
+
+const Main = styled.div`
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
 `
 
 const LeftMenu = styled.div`
