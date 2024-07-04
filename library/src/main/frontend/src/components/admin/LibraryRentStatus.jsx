@@ -1,8 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import PracChart from "./chart/PracChart";
+import { useNavigate } from 'react-router-dom';
 
 const LibraryRentStatus = () => {
+
+    const navigate = useNavigate();
+
+    const bookPage = () => {
+        navigate("/admin/book")
+    }
+
+    const userPage = () => {
+        navigate("/admin/user")
+    }
+
     return (
         <>
             <TopMenu>
@@ -12,22 +24,13 @@ const LibraryRentStatus = () => {
             </TopMenu>
 
             <Main>
-
                 <LeftMenu>
-                    <LeftRentStatus>
-
-                    </LeftRentStatus>
-
-                    <LeftBookStatus>
-
-                    </LeftBookStatus>
-
-                    <LeftUserStatus>
-
-                    </LeftUserStatus>
+                    <LeftRentStatus>도서 대여 현황</LeftRentStatus>
+                    <LeftRentStatus onClick={bookPage}>도서 관리</LeftRentStatus>
+                    <LeftRentStatus onClick={userPage}>회원 관리</LeftRentStatus>
                 </LeftMenu>
-                <ChartBind>
 
+                <ChartBind>
                     <ChartNameBind>
                         <ChartName>도서 대출 현황</ChartName>
                         <ChartName>도서 분야 현황</ChartName>
@@ -86,6 +89,10 @@ const LeftRentStatus = styled.div`
     width: 100%;
     height: 10vh;
     border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 `
 
 const LeftBookStatus = styled.div`
