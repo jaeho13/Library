@@ -26,8 +26,20 @@ const LibraryRentStatus = () => {
 
                     </LeftUserStatus>
                 </LeftMenu>
+                <ChartBind>
 
-                <PracChart />
+                    <ChartNameBind>
+                        <ChartName>도서 대출 현황</ChartName>
+                        <ChartName>도서 분야 현황</ChartName>
+                        <ChartName>사용자 연령대</ChartName>
+                    </ChartNameBind>
+
+                    <ChartSize>
+                        <PracChart />
+                        <PracChart />
+                        <PracChart />
+                    </ChartSize>
+                </ChartBind>
             </Main>
         </>
     )
@@ -64,7 +76,7 @@ const Main = styled.div`
 
 const LeftMenu = styled.div`
     width: 10%;
-    height: 80vh;
+    height: 60vh;
     border: 2px solid red;
     display: flex;
     flex-direction: column;
@@ -86,4 +98,38 @@ const LeftUserStatus = styled.div`
     width: 100%;
     height: 10vh;
     border: 2px solid green;
+`
+
+const ChartBind = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`
+
+const ChartNameBind = styled.div`
+    width: 100%;
+    height: 20vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+`
+
+const ChartName = styled.div`
+    width: 30%;
+    height: 10vh;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+`
+
+const ChartSize = styled.div`
+    width: 100%;
+    height: 40vh;
+    border: 2px solid green;
+    display: flex;
+    flex-direction: row;
 `
