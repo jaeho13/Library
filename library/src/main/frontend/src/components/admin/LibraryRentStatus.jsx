@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PracChart from "./chart/PracChart";
 import { useNavigate } from 'react-router-dom';
+import BookStatusPieChart from "./chart/BookStatusPieChart";
 
 const LibraryRentStatus = () => {
 
@@ -39,8 +40,9 @@ const LibraryRentStatus = () => {
 
                     <ChartSize>
                         <PracChart />
+                        <BookStatusPieChart />
                         <PracChart />
-                        <PracChart />
+
                     </ChartSize>
                 </ChartBind>
             </Main>

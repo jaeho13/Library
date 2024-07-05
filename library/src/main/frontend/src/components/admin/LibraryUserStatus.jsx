@@ -6,7 +6,7 @@ const LibraryUserStatus = () => {
         <>
             <TopMenu>
                 <PageName>
-                    도서 관리
+                    회원 관리
                 </PageName>
             </TopMenu>
 
