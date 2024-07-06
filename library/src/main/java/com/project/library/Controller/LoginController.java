@@ -20,7 +20,7 @@ public class LoginController {
     // http://localhost:8080/swagger-ui/index.html#/Login/login
 
     @Autowired
-    LoginService loginService;
+    private LoginService loginService;
 
     @PostMapping("/loginAdmin")
     @Operation(summary = "로그인",description = "Admin/User 로그인 API")
@@ -28,7 +28,6 @@ public class LoginController {
     @Parameter(name="pw", description = "비밀번호", required = true)
     public Result login(@RequestBody Map<String, Object> loginInfo) throws Exception{
         Result result = loginService.login(loginInfo);
-
         return result;
     }
 }
