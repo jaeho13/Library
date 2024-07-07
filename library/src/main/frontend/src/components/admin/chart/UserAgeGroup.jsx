@@ -34,7 +34,7 @@ const data = [
         num: 2
     }
 ];
-const PracChart = () => {
+const UserAgeGroup = () => {
     return (
         <BarChartSize>
             <ResponsiveContainer width="100%" height="100%">
@@ -48,10 +48,10 @@ const PracChart = () => {
     );
 }
 
-export default PracChart;
+export default UserAgeGroup;
 
 const BarChartSize = styled.div`
     width: 100%;
     /* height: 30vh; */
-    border: 2px solid red;
+    /* border: 2px solid red; */
 `
