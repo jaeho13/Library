@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import PracChart from "./chart/PracChart";
 import { useNavigate } from 'react-router-dom';
 import BookStatusPieChart from "./chart/BookStatusPieChart";
+import BookRentStatus from "./chart/BookRentStatus";
+import UserAgeGroup from "./chart/UserAgeGroup";
 
 const LibraryRentStatus = () => {
 
@@ -39,10 +40,9 @@ const LibraryRentStatus = () => {
                     </ChartNameBind>
 
                     <ChartSize>
-                        <PracChart />
+                        <BookRentStatus />
                         <BookStatusPieChart />
-                        <PracChart />
-
+                        <UserAgeGroup />
                     </ChartSize>
                 </ChartBind>
             </Main>
@@ -138,7 +138,7 @@ const ChartName = styled.div`
 const ChartSize = styled.div`
     width: 100%;
     height: 40vh;
-    border: 2px solid green;
+    /* border: 2px solid green; */
     display: flex;
     flex-direction: row;
 `
