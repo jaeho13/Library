@@ -27,7 +27,7 @@ public class BookController {
         return map;
     }
 
-    @GetMapping("findRentList")
+    @GetMapping("/findRentList")
     public Map<String,Object> findRentList() {
         Map<String, Object> map = bookService.findRentList();
 
