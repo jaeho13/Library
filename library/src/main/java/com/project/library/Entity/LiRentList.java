@@ -15,11 +15,11 @@ public class LiRentList {
     @SequenceGenerator(name = "rentKey", sequenceName = "rentKey", allocationSize = 1)
     private Long rentKey;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_KEY")
     private LiUserInfo liUserInfo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BOOK_KEY")
     private LiBookInfo liBookInfo;
 

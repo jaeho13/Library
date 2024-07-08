@@ -20,6 +20,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    //책 리스트
     @GetMapping("/findBookList")
     public Map<String,Object> findBookList() {
         Map<String,Object> map = bookService.findBookList();
@@ -27,10 +28,19 @@ public class BookController {
         return map;
     }
 
+    //책 대여 리스트
     @GetMapping("/findRentList")
     public Map<String,Object> findRentList() {
         Map<String, Object> map = bookService.findRentList();
 
         return map;
     }
+
+    @GetMapping("/findGenreList")
+    public Map<String, Object> findGenreList() {
+        Map<String, Object> map = bookService.findGenreList();
+
+        return map;
+    }
+
 }
