@@ -4,16 +4,11 @@ import styled from 'styled-components';
 
 
 const data = [
-    { name: '인문,사회', value: 400 },
-    { name: '에세이', value: 300 },
-    { name: '과학', value: 300 },
-    { name: '예술', value: 200 },
-    { name: '경제', value: 200 },
-    { name: '여행', value: 200 },
-    { name: '소설', value: 200 },
+    { name: '대여', value: 200 },
+    { name: '미대여', value: 200 },
 ];
 
-const COLORS = ['#0088FE', '#FF8042', '#FFBB28', '#C5BCA9', '#E63030', '#1cdf84', '#942aeb'];
+const COLORS = ['#43fa1e', '#25c7bf'];
 
 const RADIAN = Math.PI / 180;
 
@@ -35,22 +30,25 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     );
 };
 
-const BookStatusPieChart = () => {
+const BookRentStatus = () => {
     return (
         <>
             <PieChartBind>
                 <PieChartSize>
-                    <ResponsiveContainer width="100%" height="100%">
-                        <PieChart width={400} height={400}>
+                    <ResponsiveContainer>
+                        <PieChart>
                             <Pie
                                 data={data}
                                 cx="50%"
                                 cy="50%"
                                 labelLine={false}
+                                startAngle={90} // 시작 각도
+                                endAngle={-270} // 끝 각도
                                 label={renderCustomizedLabel}
                             // outerRadius={80}
                             // fill="#8884d8"
                             // dataKey="value"
+                            // style={{ border: '2px solid black' }}
                             >
                                 {data.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -63,7 +61,7 @@ const BookStatusPieChart = () => {
                 <PieChartName>
                     {data.map((entry, index) => (
                         <div
-                            key={`legend-${index}`}
+                            // key={`legend-${index}`}
                             style={{
                                 color: COLORS[index % COLORS.length],
                                 fontWeight: 'bold'
@@ -79,7 +77,7 @@ const BookStatusPieChart = () => {
     )
 }
 
-export default BookStatusPieChart;
+export default BookRentStatus;
 
 const PieChartBind = styled.div`
     width: 100%;
