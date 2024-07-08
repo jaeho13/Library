@@ -54,7 +54,7 @@ public class BookService {
             map.put("art", liBookInfoRepository.findByArt());
             map.put("economy", liBookInfoRepository.findByEconomy());
             map.put("travel", liBookInfoRepository.findByTravel());
-            
+
         } catch (Exception e) {
             System.err.println("Exception : " + e.getMessage());
             throw e;
