@@ -36,7 +36,7 @@ const LibraryRentStatus = () => {
                     <ChartNameBind>
                         <ChartName>도서 대출 현황</ChartName>
                         <ChartName>도서 분야 현황</ChartName>
-                        <ChartName>사용자 연령대</ChartName>
+                        <ChartName>회원 연령대</ChartName>
                     </ChartNameBind>
 
                     <ChartSize>
