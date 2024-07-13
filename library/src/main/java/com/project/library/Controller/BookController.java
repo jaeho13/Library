@@ -43,9 +43,17 @@ public class BookController {
     }
 
     //차트 : 대출 현황
-    @GetMapping("chartRentList")
+    @GetMapping("/chartRentList")
     public Map<String, Object> chartRentList() {
         Map<String, Object> map = bookService.chartRentList();
+
+        return map;
+    }
+
+    //차트 : 회원 연령
+    @GetMapping("/chartMemberAge")
+    public Map<String, Object> chartMemberAge() {
+        Map<String, Object> map = bookService.chartMemberAge();
 
         return map;
     }

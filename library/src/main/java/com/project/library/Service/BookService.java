@@ -46,14 +46,14 @@ public class BookService {
     public Map<String, Object> chartGenreList() {
         Map<String, Object> map = new HashMap<>();
         String[] arr = {"인문", "에세이", "소설", "과학", "예술", "경제", "여행"};
+        String[] engArr = {"humanities", "essay", "novel", "science", "art", "economy"};
 
         log.info(" =============================================== ");
 
         for (int i = 0; arr.length > i; i++) {
             String genre = arr[i];
             map.put(arr[i], liBookInfoRepository.countBookGenre(genre));
-            log.info(genre + " : " + map.get(arr[i]) + " 권");
-
+            log.info(engArr[i] + " : " + map.get(arr[i]) + " 권");
         }
 
         log.info(" =============================================== ");
@@ -72,6 +72,14 @@ public class BookService {
         map.put("bookCnt", bookCnt);
         map.put("rentCnt", rentCnt);
 
+        return map;
+    }
+
+
+    public Map<String, Object> chartMemberAge() {
+        Map<String, Object> map = new HashMap<>();
+
+//        map.put("");
         return map;
     }
 }
