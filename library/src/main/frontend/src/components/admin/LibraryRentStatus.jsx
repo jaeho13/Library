@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
-import BookStatusPieChart from "./chart/BookStatusPieChart";
 import BookRentStatus from "./chart/BookRentStatus";
 import UserAgeGroup from "./chart/UserAgeGroup";
 import TopSide from "../side/Topside";
+import BookStatusChart from "./chart/BookStatusChart";
 
 const LibraryRentStatus = () => {
 
@@ -38,7 +38,7 @@ const LibraryRentStatus = () => {
 
                     <ChartSize>
                         <BookRentStatus />
-                        <BookStatusPieChart />
+                        <BookStatusChart />
                         <UserAgeGroup />
                     </ChartSize>
                 </ChartBind>
