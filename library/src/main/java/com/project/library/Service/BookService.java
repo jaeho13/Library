@@ -64,10 +64,13 @@ public class BookService {
     public Map<String, Object> chartRentList() {
         Map<String, Object> map = new HashMap<>();
 
-        // 전체
-        map.put("bookCnt", liBookInfoRepository.countBook());
-        // 대여 중
-        map.put("rentCnt", liRentListRepository.countRentBook());
+        int tmp = liBookInfoRepository.countBook();
+        int rentCnt = liRentListRepository.countRentBook();
+
+        int bookCnt = tmp - rentCnt;
+
+        map.put("bookCnt", bookCnt);
+        map.put("rentCnt", rentCnt);
 
         return map;
     }
