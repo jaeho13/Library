@@ -23,4 +23,7 @@ public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
             "SUM(CASE WHEN l.AGE BETWEEN 60 AND 69 THEN 1 ELSE 0 END) " +
             "FROM LI_USER_INFO l", nativeQuery = true)
     List<Object[]> findUserAge();
+
+    @Query(value = "SELECT COUNT(*) FROM LI_USER_INFO", nativeQuery = true)
+    int countUserCnt();
 }

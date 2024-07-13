@@ -84,7 +84,7 @@ public class BookService {
         Map<String, Object> map = new HashMap<>();
 
         map.put("age", liUserInfoRepository.findUserAge());
-
-        return map;
+        map.put("userCnt", liUserInfoRepository.countUserCnt());
+;        return map;
     }
 }
