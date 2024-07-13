@@ -1,36 +1,58 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
-
-const data = [
-    { name: '대여', value: 200 },
-    { name: '미대여', value: 200 },
-];
-
-const COLORS = ['#43fa1e', '#25c7bf'];
-
-const RADIAN = Math.PI / 180;
-
-
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-    return (
-        <text
-            x={x} y={y}
-            textAnchor="middle"
-            dominantBaseline="central"
-            style={{ fontSize: '16px', fontWeight: 'bold' }}
-        >
-            {`${(percent * 100).toFixed(0)}%`}
-        </text>
-    );
-};
-
 const BookRentStatus = () => {
+
+    const [rentCnt, setRentCnt] = useState();
+
+    const [bookCnt, setBookCnt] = useState();
+
+    axios.get('/chartRentList')
+        .then(function (Response) {
+            setRentCnt(Response.data.rentCnt);
+            setBookCnt(Response.data.bookCnt);
+            console.log("들어왔다");
+        })
+        .catch(function (error) {
+            console.log("안 들어왔다");
+        })
+
+
+
+    const data = [
+        {
+            name: '대여',
+            value: rentCnt
+        },
+        {
+            name: '미대여',
+            value: bookCnt
+        },
+    ];
+
+    const COLORS = ['#43fa1e', '#25c7bf'];
+
+    const RADIAN = Math.PI / 180;
+
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text
+                x={x} y={y}
+                textAnchor="middle"
+                dominantBaseline="central"
+                style={{ fontSize: '16px', fontWeight: 'bold' }}
+            >
+                {`${(percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
+
     return (
         <>
             <PieChartBind>
