@@ -46,20 +46,14 @@ public class BookService {
     public Map<String, Object> findGenreList() {
         Map<String, Object> map = new HashMap<>();
 
-        try {
             // 인문/에세이/소설/과학/예술/경제/여행
-            map.put("humanities", liBookInfoRepository.findByHumanities());
-            map.put("essay", liBookInfoRepository.findByEssay());
-            map.put("novel", liBookInfoRepository.findByNovel());
-            map.put("science", liBookInfoRepository.findByScience());
-            map.put("art", liBookInfoRepository.findByArt());
-            map.put("economy", liBookInfoRepository.findByEconomy());
-            map.put("travel", liBookInfoRepository.findByTravel());
+        map.put("humanities", liBookInfoRepository.findByHumanities());
+        map.put("essay", liBookInfoRepository.findByEssay());
+        map.put("novel", liBookInfoRepository.findByNovel());
+        map.put("science", liBookInfoRepository.findByScience());
+        map.put("art", liBookInfoRepository.findByArt());
+        map.put("economy", liBookInfoRepository.findByEconomy());map.put("travel", liBookInfoRepository.findByTravel());
 
-        } catch (Exception e) {
-            System.err.println("Exception : " + e.getMessage());
-            throw e;
-        }
         return map;
     }
 }
