@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import BookRentStatus from "./chart/BookRentStatus";
-import UserAgeGroup from "./chart/UserAgeGroup";
 import TopSide from "../side/Topside";
 import BookStatusChart from "./chart/BookStatusChart";
+import UserAgeChart from "./chart/UserAgeChart";
 
 const LibraryRentStatus = () => {
 
@@ -39,7 +39,7 @@ const LibraryRentStatus = () => {
                     <ChartSize>
                         <BookRentStatus />
                         <BookStatusChart />
-                        <UserAgeGroup />
+                        <UserAgeChart />
                     </ChartSize>
                 </ChartBind>
             </Main>
