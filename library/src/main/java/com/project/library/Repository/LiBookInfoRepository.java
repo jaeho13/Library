@@ -1,7 +1,6 @@
 package com.project.library.Repository;
 
 import com.project.library.Entity.LiBookInfo;
-import com.project.library.Entity.LiRentList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,13 +12,13 @@ import java.util.List;
 public interface LiBookInfoRepository extends JpaRepository<LiBookInfo, Long> {
 
     @Query(value = "SELECT * FROM LI_BOOK_INFO WHERE IS_DELETED = 0", nativeQuery = true)
-    List<LiBookInfo> findBook();
-
-    @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE IS_DELETED = 0 AND BOOK_GENRE LIKE :genre", nativeQuery = true)
-    int countBookGenre(@Param(value = "genre") String genre);
+    List<LiBookInfo> selectBook();
 
     @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE IS_DELETED = 0", nativeQuery = true)
     int countBook();
+
+    @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE IS_DELETED = 0 AND BOOK_GENRE LIKE :genre", nativeQuery = true)
+    int countBookGenre(@Param(value = "genre") String genre);
 
 //    @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE BOOK_GENRE LIKE '%인문%' AND IS_DELETED = 0", nativeQuery = true)
 //    int findByHumanities();

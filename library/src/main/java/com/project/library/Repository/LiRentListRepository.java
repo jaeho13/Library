@@ -11,9 +11,9 @@ import java.util.List;
 public interface LiRentListRepository extends JpaRepository<LiRentList, Long> {
 
     @Query(value = "SELECT * FROM LI_RENT_LIST WHERE IS_RETURN = 0", nativeQuery = true)
-    List<LiRentList> findRentList();
+    List<LiRentList> selectRentList();
 
     @Query(value = "SELECT COUNT(*) FROM LI_RENT_LIST WHERE IS_RETURN = 0", nativeQuery = true)
-    int findRentCnt();
+    int countRentBook();
 
 }

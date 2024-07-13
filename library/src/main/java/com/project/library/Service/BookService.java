@@ -2,14 +2,11 @@ package com.project.library.Service;
 
 import com.project.library.Repository.LiBookInfoRepository;
 import com.project.library.Repository.LiRentListRepository;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -24,7 +21,7 @@ public class BookService {
     public Map<String, Object> findBookList() {
         Map<String, Object> map = new HashMap<>();
         try {
-            map.put("bookList", liBookInfoRepository.findBook());
+            map.put("bookList", liBookInfoRepository.selectBook());
             map.put("bookCnt", liBookInfoRepository.countBook());
         } catch (Exception e) {
             System.err.println("Exception : " + e.getMessage());
@@ -37,8 +34,8 @@ public class BookService {
         Map<String, Object> map = new HashMap<>();
 
         try {
-            map.put("rentList", liRentListRepository.findRentList());
-            map.put("rentCnt", liRentListRepository.findRentCnt());
+            map.put("rentList", liRentListRepository.selectRentList());
+            map.put("rentCnt", liRentListRepository.countRentBook());
         } catch (Exception e) {
             System.err.println("Exception : " + e.getMessage());
             throw e;
@@ -46,10 +43,9 @@ public class BookService {
         return map;
     }
 
-    public Map<String, Object> findGenreList() {
+    public Map<String, Object> chartGenreList() {
         Map<String, Object> map = new HashMap<>();
         String[] arr = {"인문", "에세이", "소설", "과학", "예술", "경제", "여행"};
-
 
         log.info(" =============================================== ");
 
@@ -62,6 +58,17 @@ public class BookService {
 
         log.info(" =============================================== ");
         
+        return map;
+    }
+
+    public Map<String, Object> chartRentList() {
+        Map<String, Object> map = new HashMap<>();
+
+        // 전체
+        map.put("bookCnt", liBookInfoRepository.countBook());
+        // 대여 중
+        map.put("rentCnt", liRentListRepository.countRentBook());
+
         return map;
     }
 }
