@@ -9,29 +9,29 @@ import styled from 'styled-components';
 
 const data = [
     {
-        name: "부서 1",
-        num: 5
+        name: "10대",
+        num: 13
     },
     {
-        name: "부서 2",
-        num: 3
+        name: "20대",
+        num: 19
     },
     {
-        name: "부서 3",
-        num: 1
+        name: "30대",
+        num: 32
     },
     {
-        name: "부서 4",
-        num: 2
+        name: "40대",
+        num: 40
     }
     ,
     {
-        name: "부서 5",
-        num: 4
+        name: "50대",
+        num: 42
     },
     {
-        name: "부서 6",
-        num: 2
+        name: "60대",
+        num: 61
     }
 ];
 const UserAgeGroup = () => {

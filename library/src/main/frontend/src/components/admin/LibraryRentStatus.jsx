@@ -36,7 +36,7 @@ const LibraryRentStatus = () => {
                     <ChartNameBind>
                         <ChartName>도서 대출 현황</ChartName>
                         <ChartName>도서 분야 현황</ChartName>
-                        <ChartName>사용자 연령대</ChartName>
+                        <ChartName>회원  연령대</ChartName>
                     </ChartNameBind>
 
                     <ChartSize>
@@ -127,7 +127,7 @@ const ChartNameBind = styled.div`
 const ChartName = styled.div`
     width: 30%;
     height: 10vh;
-    /* border: 2px solid red; */
+    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +138,7 @@ const ChartName = styled.div`
 const ChartSize = styled.div`
     width: 100%;
     height: 40vh;
-    /* border: 2px solid green; */
+    border: 2px solid green;
     display: flex;
     flex-direction: row;
 `
