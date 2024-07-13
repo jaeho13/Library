@@ -2,6 +2,7 @@ package com.project.library.Service;
 
 import com.project.library.Repository.LiBookInfoRepository;
 import com.project.library.Repository.LiRentListRepository;
+import com.project.library.Repository.LiUserInfoRepository;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class BookService {
 
     @Autowired
     private LiRentListRepository liRentListRepository;
+
+    @Autowired
+    private LiUserInfoRepository liUserInfoRepository;
 
     public Map<String, Object> findBookList() {
         Map<String, Object> map = new HashMap<>();
@@ -76,10 +80,11 @@ public class BookService {
     }
 
 
-    public Map<String, Object> chartMemberAge() {
+    public Map<String, Object> chartUserAge() {
         Map<String, Object> map = new HashMap<>();
 
-//        map.put("");
+        map.put("age", liUserInfoRepository.findUserAge());
+
         return map;
     }
 }

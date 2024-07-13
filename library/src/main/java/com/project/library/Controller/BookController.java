@@ -51,9 +51,9 @@ public class BookController {
     }
 
     //차트 : 회원 연령
-    @GetMapping("/chartMemberAge")
-    public Map<String, Object> chartMemberAge() {
-        Map<String, Object> map = bookService.chartMemberAge();
+    @GetMapping("/chartUserAge")
+    public Map<String, Object> chartUserAge() {
+        Map<String, Object> map = bookService.chartUserAge();
 
         return map;
     }
