@@ -3,36 +3,72 @@ import React, { useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
-const BookRentStatus = () => {
+const BookStatusChart = () => {
 
-    const [rentCnt, setRentCnt] = useState();
+    const [art, artSet] = useState();
 
-    const [bookCnt, setBookCnt] = useState();
+    const [humanities, humanitiesSet] = useState();
 
-    axios.get('/chartRentList')
+    const [trip, tripSet] = useState();
+
+    const [science, scienceSet] = useState();
+
+    const [essay, essaySet] = useState();
+
+    const [economy, economySet] = useState();
+
+    const [novel, novelSet] = useState();
+
+    axios.get('/chartGenreList')
         .then(function (Response) {
-            setRentCnt(Response.data.rentCnt);
-            setBookCnt(Response.data.bookCnt);
-            console.log("대여 현황 데이터 들어왔다");
+            artSet(Response.data.art);
+            humanitiesSet(Response.data.humanities);
+            tripSet(Response.data.trip);
+            scienceSet(Response.data.science);
+            essaySet(Response.data.essay);
+            economySet(Response.data.economy);
+            novelSet(Response.data.novel);
+            console.log("분야 현황 데이터")
         })
         .catch(function (error) {
-            console.log("대여 현황 데이터 안 들어왔다");
+            console.log("분야 현황 데이터 안 들어왔다");
         })
 
     const data = [
         {
-            name: '대여',
-            value: rentCnt
+            name: '예술',
+            value: art
         },
         {
-            name: '미대여',
-            value: bookCnt
+            name: '인문',
+            value: humanities
+        },
+        {
+            name: '여행',
+            value: trip
+        },
+        {
+            name: '과학',
+            value: science
+        },
+        {
+            name: '에세이',
+            value: essay
+        },
+        {
+            name: '경제',
+            value: economy
+        },
+        {
+            name: '소설',
+            value: novel
         },
     ];
 
-    const COLORS = ['#43fa1e', '#25c7bf'];
+    const COLORS = ['#0088FE', '#FF8042', '#FFBB28', '#C5BCA9', '#E63030', '#1cdf84', '#942aeb'];
 
     const RADIAN = Math.PI / 180;
+
 
     const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
         const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -55,20 +91,17 @@ const BookRentStatus = () => {
         <>
             <PieChartBind>
                 <PieChartSize>
-                    <ResponsiveContainer>
-                        <PieChart>
+                    <ResponsiveContainer width="100%" height="100%">
+                        <PieChart width={400} height={400}>
                             <Pie
                                 data={data}
                                 cx="50%"
                                 cy="50%"
                                 labelLine={false}
-                                startAngle={90} // 시작 각도
-                                endAngle={-270} // 끝 각도
                                 label={renderCustomizedLabel}
                             // outerRadius={80}
                             // fill="#8884d8"
                             // dataKey="value"
-                            // style={{ border: '2px solid black' }}
                             >
                                 {data.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -81,7 +114,7 @@ const BookRentStatus = () => {
                 <PieChartName>
                     {data.map((entry, index) => (
                         <div
-                            // key={`legend-${index}`}
+                            key={`legend-${index}`}
                             style={{
                                 color: COLORS[index % COLORS.length],
                                 fontWeight: 'bold'
@@ -97,7 +130,7 @@ const BookRentStatus = () => {
     )
 }
 
-export default BookRentStatus;
+export default BookStatusChart;
 
 const PieChartBind = styled.div`
     width: 100%;
