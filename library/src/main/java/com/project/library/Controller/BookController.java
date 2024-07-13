@@ -36,6 +36,7 @@ public class BookController {
         return map;
     }
 
+    //책 장르 수
     @GetMapping("/findGenreList")
     public Map<String, Object> findGenreList() {
         Map<String, Object> map = bookService.findGenreList();
