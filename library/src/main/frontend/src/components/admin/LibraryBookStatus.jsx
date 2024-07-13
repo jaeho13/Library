@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import TopSide from "../side/Topside";
 
 const LibraryBookStatus = () => {
     return (
         <>
-            <TopMenu>
-                <PageName>
-                    도서 관리
-                </PageName>
-            </TopMenu>
-
+            <TopSide name="도서 관리" />
 
             <LeftMenu>
                 <LeftRentStatus>

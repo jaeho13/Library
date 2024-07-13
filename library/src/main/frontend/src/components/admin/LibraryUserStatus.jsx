@@ -1,14 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import TopSide from "../side/Topside";
 
 const LibraryUserStatus = () => {
     return (
         <>
-            <TopMenu>
-                <PageName>
-                    회원 관리
-                </PageName>
-            </TopMenu>
+            <TopSide name="회원 관리" />
 
 
             <LeftMenu>

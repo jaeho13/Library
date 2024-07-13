@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BookStatusPieChart from "./chart/BookStatusPieChart";
 import BookRentStatus from "./chart/BookRentStatus";
 import UserAgeGroup from "./chart/UserAgeGroup";
+import TopSide from "../side/Topside";
 
 const LibraryRentStatus = () => {
 
@@ -19,11 +20,7 @@ const LibraryRentStatus = () => {
 
     return (
         <>
-            <TopMenu>
-                <PageName>
-                    도서 대여 현황
-                </PageName>
-            </TopMenu>
+            <TopSide name="도서 대여 현황" />
 
             <Main>
                 <LeftMenu>
