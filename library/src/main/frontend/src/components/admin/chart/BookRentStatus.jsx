@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
@@ -9,15 +9,19 @@ const BookRentStatus = () => {
 
     const [bookCnt, setBookCnt] = useState();
 
-    axios.get('/chartRentList')
-        .then(function (Response) {
-            setRentCnt(Response.data.rentCnt);
-            setBookCnt(Response.data.bookCnt);
-            console.log("대여 현황 데이터 들어왔다");
-        })
-        .catch(function (error) {
-            console.log("대여 현황 데이터 안 들어왔다");
-        })
+    useEffect(() => {
+        const loadBookStatus = async () => {
+            try {
+                const response = await axios.get('/chartRentList');
+                setRentCnt(response.data.rentCnt);
+                setBookCnt(response.data.bookCnt);
+                console.log("대여 현황 데이터 들어왔다");
+            } catch (error) {
+                console.log("대여 현황 데이터 안 들어왔다");
+            }
+        };
+        loadBookStatus();
+    }, []);
 
     const data = [
         {

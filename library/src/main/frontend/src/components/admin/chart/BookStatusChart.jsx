@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
@@ -19,20 +19,24 @@ const BookStatusChart = () => {
 
     const [novel, novelSet] = useState();
 
-    axios.get('/chartGenreList')
-        .then(function (Response) {
-            artSet(Response.data.art);
-            humanitiesSet(Response.data.humanities);
-            tripSet(Response.data.trip);
-            scienceSet(Response.data.science);
-            essaySet(Response.data.essay);
-            economySet(Response.data.economy);
-            novelSet(Response.data.novel);
-            console.log("분야 현황 데이터")
-        })
-        .catch(function (error) {
-            console.log("분야 현황 데이터 안 들어왔다");
-        })
+    useEffect(() => {
+        const loadBookGenre = async () => {
+            try {
+                const response = await axios.get('/chartGenreList');
+                artSet(response.data.art);
+                humanitiesSet(response.data.humanities);
+                tripSet(response.data.trip);
+                scienceSet(response.data.science);
+                essaySet(response.data.essay);
+                economySet(response.data.economy);
+                novelSet(response.data.novel);
+                console.log("분야 현황 데이터")
+            } catch (error) {
+                console.log("분야 현황 데이터 안 들어왔다");
+            }
+        }
+        loadBookGenre();
+    })
 
     const data = [
         {
