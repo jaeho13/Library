@@ -8,7 +8,6 @@ const UserAgeChart = () => {
 
     const [userCnt, setUserCnt] = useState();
 
-
     const [chartData, setChartData] = useState({
         labels: ['10대', '20대', '30대', '40대', '50대', '60대'],
         datasets: [
@@ -37,19 +36,19 @@ const UserAgeChart = () => {
     });
 
     useEffect(() => {
-        fetchData();
-    }, []); // 컴포넌트가 마운트될 때 한 번만 호출
-
-    const fetchData = async () => {
-        try {
-            const response = await axios.get('/chartUserAge');
-            const ageData = response.data.age[0]; // 서버에서 받은 데이터의 첫 번째 배열 사용
-            setUserCnt(response.data.userCnt)
-            updateChartData(ageData);
-        } catch (error) {
-            console.error('회원 연령대 데이터를 가져오는 중 오류 발생:', error);
-        }
-    };
+        const loadUserAge = async () => {
+            try {
+                const response = await axios.get('/chartUserAge');
+                const ageData = response.data.age[0];
+                setUserCnt(response.data.userCnt)
+                updateChartData(ageData);
+                console.error("유저 나이 데이터 들어왔다");
+            } catch (error) {
+                console.error("유저 나이 데이터 안 들어왔다");
+            }
+        };
+        loadUserAge();
+    }, [])
 
     const updateChartData = (ageData) => {
         setChartData(prevChartData => ({
@@ -106,8 +105,9 @@ const PieChartBind = styled.div`
 `
 
 const BarChartSize = styled.div`
-    width: 100%;
-    /* border: 2px solid red; */
+    /* width: 100%; */
+    height: 30vh;
+    border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,7 +115,8 @@ const BarChartSize = styled.div`
 
 const UserTotalCnt = styled.div`
     width: 100%;
-    height: 5vh;
+    height: 10vh;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
