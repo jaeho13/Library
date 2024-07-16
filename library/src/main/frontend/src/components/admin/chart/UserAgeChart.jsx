@@ -98,7 +98,7 @@ const UserAgeChart = () => {
 export default UserAgeChart;
 
 const PieChartBind = styled.div`
-    width: 100%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: center;

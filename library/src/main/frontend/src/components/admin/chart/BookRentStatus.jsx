@@ -104,7 +104,7 @@ const BookRentStatus = () => {
 export default BookRentStatus;
 
 const PieChartBind = styled.div`
-    width: 100%;
+    width: 33%;
     display: flex;
     flex-direction: column;
     border-right: 2px solid black;
