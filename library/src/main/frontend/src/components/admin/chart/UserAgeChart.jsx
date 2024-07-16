@@ -42,9 +42,9 @@ const UserAgeChart = () => {
                 const ageData = response.data.age[0];
                 setUserCnt(response.data.userCnt)
                 updateChartData(ageData);
-                console.error("유저 나이 데이터 들어왔다");
+                console.log("유저 나이 데이터 들어왔다");
             } catch (error) {
-                console.error("유저 나이 데이터 안 들어왔다");
+                console.log("유저 나이 데이터 안 들어왔다");
             }
         };
         loadUserAge();
