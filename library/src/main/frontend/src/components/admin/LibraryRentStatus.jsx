@@ -73,18 +73,6 @@ const LeftRentStatus = styled.div`
     cursor: pointer;
 `
 
-const LeftBookStatus = styled.div`
-    width: 100%;
-    height: 10vh;
-    border: 2px solid black;
-`
-
-const LeftUserStatus = styled.div`
-    width: 100%;
-    height: 10vh;
-    border: 2px solid green;
-`
-
 const ChartBind = styled.div`
     width: 100%;
     display: flex;
@@ -117,4 +105,5 @@ const ChartSize = styled.div`
     border: 2px solid green;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 `
