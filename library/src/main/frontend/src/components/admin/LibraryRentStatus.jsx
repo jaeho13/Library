@@ -10,6 +10,10 @@ const LibraryRentStatus = () => {
 
     const navigate = useNavigate();
 
+    const mainPage = () => {
+        navigate("/admin/main")
+    }
+
     const bookPage = () => {
         navigate("/admin/book")
     }
@@ -24,24 +28,12 @@ const LibraryRentStatus = () => {
 
             <Main>
                 <LeftMenu>
+                    <LeftRentStatus onClick={mainPage}>관리자 페이지</LeftRentStatus>
                     <LeftRentStatus>도서 대여 현황</LeftRentStatus>
                     <LeftRentStatus onClick={bookPage}>도서 관리</LeftRentStatus>
                     <LeftRentStatus onClick={userPage}>회원 관리</LeftRentStatus>
                 </LeftMenu>
 
-                <ChartBind>
-                    <ChartNameBind>
-                        <ChartName>도서 대출 현황</ChartName>
-                        <ChartName>도서 분야 현황</ChartName>
-                        <ChartName>회원  연령대</ChartName>
-                    </ChartNameBind>
-
-                    <ChartSize>
-                        <BookRentStatus />
-                        <BookStatusChart />
-                        <UserAgeChart />
-                    </ChartSize>
-                </ChartBind>
             </Main>
         </>
     )
@@ -71,39 +63,4 @@ const LeftRentStatus = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-`
-
-const ChartBind = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`
-
-const ChartNameBind = styled.div`
-    width: 100%;
-    height: 20vh;
-    border: 2px solid black;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-`
-
-const ChartName = styled.div`
-    width: 30%;
-    height: 10vh;
-    border: 2px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    color: white;
-`
-
-const ChartSize = styled.div`
-    width: 100%;
-    height: 40vh;
-    border: 2px solid green;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 `
