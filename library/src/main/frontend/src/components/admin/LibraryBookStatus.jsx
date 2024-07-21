@@ -93,6 +93,6 @@ const BookRemove = styled.div`
 
 const BookInfoList = styled.div`
     width: 100%;
-    height: 3vh;
+    height: 50vh;
     border: 2px solid red;
 `
