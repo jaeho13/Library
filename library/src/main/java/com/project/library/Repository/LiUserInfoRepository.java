@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
@@ -26,4 +27,7 @@ public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
 
     @Query(value = "SELECT COUNT(*) FROM LI_USER_INFO", nativeQuery = true)
     int countUserCnt();
+
+    @Query(value = "SELECT * FROM LI_USER_INFO")
+    List<LiUserInfo> findUserList();
 }

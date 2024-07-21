@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-@RequiredArgsConstructor
-@RestController
-@Log4j2
+
 @Tag(name = "Book", description = "Book List API")
 public class BookController {
     @Autowired
@@ -57,4 +55,5 @@ public class BookController {
 
         return map;
     }
+
 }
