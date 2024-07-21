@@ -28,6 +28,6 @@ public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
     @Query(value = "SELECT COUNT(*) FROM LI_USER_INFO", nativeQuery = true)
     int countUserCnt();
 
-    @Query(value = "SELECT * FROM LI_USER_INFO")
+    @Query(value = "SELECT * FROM LI_USER_INFO", nativeQuery = true)
     List<LiUserInfo> findUserList();
 }
