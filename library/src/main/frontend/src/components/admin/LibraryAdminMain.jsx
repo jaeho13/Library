@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import BookRentStatus from "./chart/BookRentStatus";
+import BookRentStatusChart from "./chart/BookRentStatusChart";
 import TopSide from "../side/TopSide";
 import BookStatusChart from "./chart/BookStatusChart";
 import UserAgeChart from "./chart/UserAgeChart";
@@ -22,7 +22,7 @@ const LibraryAdminMain = () => {
                     </ChartNameBind>
 
                     <ChartSize>
-                        <BookRentStatus />
+                        <BookRentStatusChart />
                         <BookStatusChart />
                         <UserAgeChart />
                     </ChartSize>
