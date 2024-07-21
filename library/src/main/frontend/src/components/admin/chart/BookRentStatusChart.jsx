@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import styled from 'styled-components';
 
-const BookRentStatus = () => {
+const BookRentStatusChart = () => {
 
     const [rentCnt, setRentCnt] = useState();
-
     const [bookCnt, setBookCnt] = useState();
 
     useEffect(() => {
@@ -22,6 +21,16 @@ const BookRentStatus = () => {
         };
         loadBookStatus();
     }, []);
+
+    // axios.get('/chartRentList')
+    // .then(function (Response) {
+    //     setRentCnt(Response.data.rentCnt);
+    //     setBookCnt(Response.data.bookCnt);
+    //     console.log("대여 현황 데이터 들어왔다");
+    // })
+    // .catch(function (error) {
+    //     console.log("대여 현황 데이터 안 들어왔다");
+    // })
 
     const data = [
         {
@@ -101,7 +110,7 @@ const BookRentStatus = () => {
     )
 }
 
-export default BookRentStatus;
+export default BookRentStatusChart;
 
 const PieChartBind = styled.div`
     width: 33%;
