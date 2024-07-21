@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from 'react-router-dom';
 import BookRentStatus from "./chart/BookRentStatus";
 import TopSide from "../side/TopSide";
 import BookStatusChart from "./chart/BookStatusChart";
@@ -8,21 +7,6 @@ import UserAgeChart from "./chart/UserAgeChart";
 import LeftSide from "../side/LeftSide";
 
 const LibraryAdminMain = () => {
-
-    const navigate = useNavigate();
-
-    const rentPage = () => {
-        navigate("/admin/rent")
-    }
-
-    const bookPage = () => {
-        navigate("/admin/book")
-    }
-
-    const userPage = () => {
-        navigate("/admin/user")
-    }
-
     return (
         <>
             <TopSide name="관리자 페이지" />

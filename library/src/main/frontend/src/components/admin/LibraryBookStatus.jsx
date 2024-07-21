@@ -1,24 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import TopSide from "../side/TopSide";
-import { useNavigate } from "react-router-dom";
 import LeftSide from "../side/LeftSide";
 
 const LibraryBookStatus = () => {
-
-    const navigate = useNavigate();
-
-    const mainPage = () => {
-        navigate("/admin/main")
-    }
-
-    const rentPage = () => {
-        navigate("/admin/rent")
-    }
-
-    const userPage = () => {
-        navigate("/admin/user")
-    }
 
     return (
         <>
