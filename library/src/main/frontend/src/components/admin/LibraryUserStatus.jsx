@@ -29,6 +29,15 @@ const LibraryUserStatus = () => {
 
                 <UserListBind>
 
+                    <UserManage>
+                        <UserAdd>
+                            회원 추가
+                        </UserAdd>
+                        <UserRemove>
+                            회원 삭제
+                        </UserRemove>
+                    </UserManage>
+
                     <UserList>
                         <UserCheck />
                         <UserNumber>회원 번호</UserNumber>
@@ -68,6 +77,35 @@ const UserListBind = styled.div`
     width: 100%;
     height: 60vh;
     border: 2px solid red;
+`
+
+const UserManage = styled.div`
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid black;
+    align-items: center;
+`
+
+const UserAdd = styled.div`
+    width: 10%;
+    height: 5vh;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+`
+
+const UserRemove = styled.div`
+    width: 10%;
+    height: 5vh;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
 `
 
 const UserList = styled.div`
