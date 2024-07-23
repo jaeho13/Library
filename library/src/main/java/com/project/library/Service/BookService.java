@@ -1,5 +1,6 @@
 package com.project.library.Service;
 
+import com.project.library.Entity.LiBookInfo;
 import com.project.library.Repository.LiBookInfoRepository;
 import com.project.library.Repository.LiRentListRepository;
 import com.project.library.Repository.LiUserInfoRepository;
@@ -7,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -79,4 +81,18 @@ public class BookService {
         return map;
     }
 
+    public void insertBook(Map<String, Object> map) {
+        LiBookInfo bookInfo = new LiBookInfo();
+
+        bookInfo.setBookName((String) map.get("title"));
+        bookInfo.setBookWriter((String) map.get("writer"));
+        bookInfo.setBookGenre((String) map.get("genre"));
+        Long cnt = Long.parseLong((String) map.get("count"));
+        bookInfo.setBookCnt(cnt);
+        bookInfo.setDateReg((Date) map.get("date"));
+        bookInfo.setIsDeleted(0);
+
+        liBookInfoRepository.save(bookInfo);
+        log.info("-------도서 등록 성공-------");
+    }
 }
