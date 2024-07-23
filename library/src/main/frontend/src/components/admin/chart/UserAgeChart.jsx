@@ -38,7 +38,7 @@ const UserAgeChart = () => {
     useEffect(() => {
         const loadUserAge = async () => {
             try {
-                const response = await axios.get('/chartUserAge');
+                const response = await axios.get('/user/chartUserAge');
                 const ageData = response.data.age[0];
                 setUserCnt(response.data.userCnt)
                 updateChartData(ageData);

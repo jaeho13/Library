@@ -15,7 +15,7 @@ const LibraryUserStatus = () => {
     useEffect(() => {
         const userListLoad = async () => {
             try {
-                const response = await axios.get("/findUserList");
+                const response = await axios.get("/user/findUserList");
                 setUserList(response.data.userList);
                 console.log("유저 리스트 데이터 들어왔다");
             } catch (error) {

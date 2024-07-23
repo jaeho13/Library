@@ -11,7 +11,7 @@ const BookRentStatusChart = () => {
     useEffect(() => {
         const loadBookStatus = async () => {
             try {
-                const response = await axios.get('/chartRentList');
+                const response = await axios.get('/book/chartRentList');
                 setRentCnt(response.data.rentCnt);
                 setBookCnt(response.data.bookCnt);
                 console.log("대여 현황 데이터 들어왔다");

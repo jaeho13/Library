@@ -22,7 +22,7 @@ const BookStatusChart = () => {
     useEffect(() => {
         const loadBookGenre = async () => {
             try {
-                const response = await axios.get('/chartGenreList');
+                const response = await axios.get('/book/chartGenreList');
                 artSet(response.data.art);
                 humanitiesSet(response.data.humanities);
                 tripSet(response.data.trip);
