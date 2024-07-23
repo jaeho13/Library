@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
@@ -18,8 +20,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    final String bookUrl = "/book";
     //책 리스트
-    @GetMapping("/findBookList")
+    @GetMapping(bookUrl + "/findBookList")
     public Map<String,Object> findBookList() {
         Map<String,Object> map = bookService.findBookList();
 
@@ -27,7 +30,7 @@ public class BookController {
     }
 
     //책 대여 리스트
-    @GetMapping("/findRentList")
+    @GetMapping(bookUrl + "/findRentList")
     public Map<String,Object> findRentList() {
         Map<String, Object> map = bookService.findRentList();
 
@@ -35,7 +38,7 @@ public class BookController {
     }
 
     //차트 : 책 장르 수
-    @GetMapping("/chartGenreList")
+    @GetMapping(bookUrl + "/chartGenreList")
     public Map<String, Object> chartGenreList() {
         Map<String, Object> map = bookService.chartGenreList();
 
@@ -43,18 +46,11 @@ public class BookController {
     }
 
     //차트 : 대출 현황
-    @GetMapping("/chartRentList")
+    @GetMapping(bookUrl + "/chartRentList")
     public Map<String, Object> chartRentList() {
         Map<String, Object> map = bookService.chartRentList();
 
         return map;
     }
 
-    //차트 : 회원 연령
-    @GetMapping("/chartUserAge")
-    public Map<String, Object> chartUserAge() {
-        Map<String, Object> map = bookService.chartUserAge();
-
-        return map;
-    }
 }

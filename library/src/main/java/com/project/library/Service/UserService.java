@@ -23,4 +23,12 @@ public class UserService {
 
         return map;
     }
+
+    public Map<String, Object> chartUserAge() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("age", liUserInfoRepository.findUserAge());
+        map.put("userCnt", liUserInfoRepository.countUserCnt());
+        ;        return map;
+    }
 }

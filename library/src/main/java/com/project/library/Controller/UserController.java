@@ -17,10 +17,21 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @GetMapping("/findUserList")
+
+    final String userUrl = "/user";
+
+    @GetMapping(userUrl + "/findUserList")
     public Map<String,Object> findUserList() {
         Map<String, Object> map = userService.findUserList();
         
+        return map;
+    }
+
+    //차트 : 회원 연령
+    @GetMapping(userUrl + "/chartUserAge")
+    public Map<String, Object> chartUserAge() {
+        Map<String, Object> map = userService.chartUserAge();
+
         return map;
     }
 }
