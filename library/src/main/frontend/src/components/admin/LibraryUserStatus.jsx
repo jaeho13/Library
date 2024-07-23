@@ -39,13 +39,17 @@ const LibraryUserStatus = () => {
     return (
         <>
             <TopSide name="회원 관리" />
+
             <BoardBind>
+
                 <LeftSide />
+
                 <UserListBind>
                     <UserManage>
                         <UserAdd>회원 추가</UserAdd>
                         <UserRemove>회원 삭제</UserRemove>
                     </UserManage>
+
                     <UserListHeader>
                         <UserCheck />
                         <UserNumber>회원 번호</UserNumber>
@@ -54,6 +58,7 @@ const LibraryUserStatus = () => {
                         <UserSex>성별</UserSex>
                         <UserAge>생년월일</UserAge>
                     </UserListHeader>
+
                     {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <UserList key={index}>
@@ -147,7 +152,7 @@ const UserList = styled.div`
 `;
 
 const UserCheck = styled.div`
-    width: 10%;
+    width: 5%;
     height: 5vh;
     border: 2px solid black;
     display: flex;
@@ -165,7 +170,7 @@ const UserNumber = styled.div`
 `;
 
 const UserId = styled.div`
-    width: 20%;
+    width: 25%;
     height: 5vh;
     border: 2px solid black;
     display: flex;
