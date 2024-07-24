@@ -3,10 +3,16 @@ import styled from "styled-components";
 import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 
 const LibraryBookStatus = () => {
 
     const [bookList, setBookList] = useState([]);
+    const [currentItems, setCurrentItems] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 7;
+
 
     useEffect(() => {
         const bookListLoad = async () => {
@@ -20,6 +26,17 @@ const LibraryBookStatus = () => {
         };
         bookListLoad();
     }, []);
+
+    useEffect(() => {
+        const endOffset = itemOffset + itemsPerPage;
+        setCurrentItems(bookList.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(bookList.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, bookList]);
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % bookList.length;
+        setItemOffset(newOffset);
+    };
 
     return (
         <>
@@ -44,7 +61,7 @@ const LibraryBookStatus = () => {
                         <BookDate>입고일</BookDate>
                     </BookInfoListHeader>
 
-                    {bookList.length > 0 && bookList.map((item, index) => {
+                    {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <BookInfoList key={index}>
                                 <BookCheck />
@@ -56,6 +73,19 @@ const LibraryBookStatus = () => {
                             </BookInfoList>
                         )
                     })}
+
+                    <PaginationContainer>
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="<"
+                            containerClassName={"pagination"}
+                            activeClassName={"active"}
+                        />
+                    </PaginationContainer>
                 </BookInfoBind>
 
             </BoardBind>
@@ -177,3 +207,26 @@ const BookDate = styled.div`
     justify-content: center;
     align-items: center;
 `
+
+const PaginationContainer = styled.div`
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .pagination li.active {
+        font-weight: bold;
+    }
+`;
