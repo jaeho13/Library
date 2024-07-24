@@ -3,10 +3,16 @@ import styled from "styled-components";
 import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
+import ReactPaginate from "react-paginate";
 
 const LibraryRentStatus = () => {
 
     const [bookRentList, setBookRentList] = useState([]);
+    const [currentItems, setCurrentItems] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemsPerPage = 7;
+
 
     useEffect(() => {
         const bookRentListLoad = async () => {
@@ -20,6 +26,18 @@ const LibraryRentStatus = () => {
         };
         bookRentListLoad();
     }, [])
+
+    useEffect(() => {
+        const endOffset = itemOffset + itemsPerPage;
+        setCurrentItems(bookRentList.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(bookRentList.length / itemsPerPage));
+    }, [itemOffset, itemsPerPage, bookRentList]);
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % bookRentList.length;
+        setItemOffset(newOffset);
+    };
+
 
     return (
         <>
@@ -37,7 +55,7 @@ const LibraryRentStatus = () => {
                         <BookRentReturn>반납 날짜</BookRentReturn>
                     </BookRentList>
 
-                    {bookRentList.length > 0 && bookRentList.map((item, index) => {
+                    {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <BookRentList key={index}>
                                 <BookName>{item.liUserInfo.name}</BookName>
@@ -48,6 +66,19 @@ const LibraryRentStatus = () => {
                             </BookRentList>
                         )
                     })}
+
+                    <PaginationContainer>
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="<"
+                            containerClassName={"pagination"}
+                            activeClassName={"active"}
+                        />
+                    </PaginationContainer>
 
                 </BookRentListBind>
 
@@ -139,3 +170,26 @@ const BookRentReturn = styled.div`
     justify-content: center;
     align-items: center;
 `
+
+const PaginationContainer = styled.div`
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .pagination {
+        display: flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .pagination li {
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .pagination li.active {
+        font-weight: bold;
+    }
+`;
