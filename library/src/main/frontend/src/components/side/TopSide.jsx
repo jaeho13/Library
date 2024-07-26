@@ -30,7 +30,7 @@ export default TopSide;
 const TopMenu = styled.div`
     width: 100%;
     height: 20vh;
-    border: 2px solid blue;
+    border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;

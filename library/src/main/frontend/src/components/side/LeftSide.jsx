@@ -40,7 +40,10 @@ export default LeftSide;
 
 const Main = styled.div`
     width: 10%;
-    border: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: row;
 `
@@ -55,7 +58,8 @@ const LeftMenu = styled.div`
 
 const LeftRentStatus = styled.div`
     height: 10vh;
-    border: 2px solid blue;
+    border-bottom: 2px solid black;
+    /* border: 2px solid blue; */
     display: flex;
     justify-content: center;
     align-items: center;
