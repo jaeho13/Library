@@ -3,13 +3,20 @@ import styled from "styled-components"
 
 
 
-const Modal = () => {
+const Modal = ({ onClose }) => {
+
+    const handleBackgroundClick = (e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    };
+
     return (
         <>
-            <ModalBackground>
+            <ModalBackground onClick={handleBackgroundClick}>
                 <ModalWindow>
                     삭제 되었습니다.
-                    <ModalBtn>닫기</ModalBtn>
+                    <ModalBtn onClick={onClose}>확인</ModalBtn>
                 </ModalWindow>
             </ModalBackground>
         </>
@@ -19,12 +26,16 @@ const Modal = () => {
 export default Modal;
 
 const ModalBackground = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9;
 `
 
 const ModalWindow = styled.div`
@@ -37,11 +48,14 @@ const ModalWindow = styled.div`
     border-radius: 8px;
     background-color: lightgray;
     position: relative;
+    z-index: 10;
 `
 
 const ModalBtn = styled.button`
     width: 100px;
     height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
     position: absolute;
     bottom: 20px;
     right: 20px;

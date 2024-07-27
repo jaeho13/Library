@@ -4,6 +4,7 @@ import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import Modal from "../modal/Modal";
 
 const LibraryUserStatus = () => {
     const [userList, setUserList] = useState([]);
@@ -11,6 +12,8 @@ const LibraryUserStatus = () => {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 7;
+    const [checkedItems, setCheckedItems] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const userListLoad = async () => {
@@ -31,9 +34,20 @@ const LibraryUserStatus = () => {
         setPageCount(Math.ceil(userList.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, userList]);
 
-    const handlePageClick = (event) => {
+    const pageChange = (event) => {
         const newOffset = (event.selected * itemsPerPage) % userList.length;
         setItemOffset(newOffset);
+    };
+
+    const boxCheck = (userKey) => {
+        setCheckedItems((prevCheckedItems) => ({
+            ...prevCheckedItems,
+            [userKey]: !prevCheckedItems[userKey],
+        }));
+    };
+
+    const handleUserRemove = () => {
+        setIsModalOpen(true);
     };
 
     return (
@@ -47,7 +61,7 @@ const LibraryUserStatus = () => {
                 <UserListBind>
                     <UserManage>
                         <UserAdd>회원 추가</UserAdd>
-                        <UserRemove>회원 삭제</UserRemove>
+                        <UserRemove onClick={handleUserRemove}>회원 삭제</UserRemove>
                     </UserManage>
 
                     <UserListHeader>
@@ -62,7 +76,13 @@ const LibraryUserStatus = () => {
                     {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <UserList key={index}>
-                                <UserCheck />
+                                <UserCheck>
+                                    <input
+                                        type="checkbox"
+                                        checked={!!checkedItems[item.userKey]}
+                                        onChange={() => boxCheck(item.userKey)}
+                                    />
+                                </UserCheck>
                                 <UserNumber>{item.userKey}</UserNumber>
                                 <UserId>{item.id}</UserId>
                                 <UserName>{item.name}</UserName>
@@ -76,7 +96,7 @@ const LibraryUserStatus = () => {
                         <ReactPaginate
                             breakLabel="..."
                             nextLabel=">"
-                            onPageChange={handlePageClick}
+                            onPageChange={pageChange}
                             pageRangeDisplayed={5}
                             pageCount={pageCount}
                             previousLabel="<"
@@ -87,6 +107,9 @@ const LibraryUserStatus = () => {
 
                 </UserListBind>
             </BoardBind>
+
+            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />} {/* 모달 창 표시 */}
+
         </>
     );
 };
@@ -199,6 +222,7 @@ const UserSex = styled.div`
 const UserAge = styled.div`
     width: 20%;
     height: 5vh;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -206,7 +230,7 @@ const UserAge = styled.div`
 
 const PaginationContainer = styled.div`
     width: 100%;
-    height: 5vh;
+    height: 8vh;
     display: flex;
     justify-content: center;
     align-items: center;
