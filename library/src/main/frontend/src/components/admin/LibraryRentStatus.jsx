@@ -71,11 +71,11 @@ const LibraryRentStatus = () => {
                     {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <BookRentList key={index}>
-                                <BookName>{item.liUserInfo.name}</BookName>
-                                <BookId>{item.liUserInfo.id}</BookId>
-                                <BookTitle>{item.liBookInfo.bookName}</BookTitle>
-                                <BookRentDay>{rentDate(item.dateReg)}</BookRentDay>
-                                <BookRentReturn>{returnDate(item.dateReg, 14)}</BookRentReturn>
+                                <BookName>{item.name}</BookName>
+                                <BookId>{item.id}</BookId>
+                                <BookTitle>{item.bookName}</BookTitle>
+                                <BookRentDay>{rentDate(item.rentDate)}</BookRentDay>
+                                <BookRentReturn>{returnDate(item.rentDate, 14)}</BookRentReturn>
                             </BookRentList>
                         )
                     })}
@@ -165,6 +165,7 @@ const BookRentReturn = styled.div`
     width: 15%;
     height: 5vh;
     border-bottom: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
