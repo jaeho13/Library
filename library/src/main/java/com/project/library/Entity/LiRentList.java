@@ -23,9 +23,9 @@ public class LiRentList {
     @JoinColumn(name = "BOOK_KEY")
     private LiBookInfo liBookInfo;
 
-    @Column(name = "IS_RETURN")
-    private int isReturn;
+    @Column(name = "RENT_DATE")
+    private Date rentDate; //대여일
 
-    @Column(name = "DATE_REG")
-    private Date dateReg; //반납일
+    @Column(name = "RENT_DELETED")
+    private int rentDeleted; //대여기록용 반납햇다면 값 1로 변경
 }

@@ -1,14 +1,13 @@
 package com.project.library.Controller;
 
+import com.project.library.Entity.Result;
 import com.project.library.Service.BookService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.persistence.PreUpdate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -53,9 +52,21 @@ public class BookController {
         return map;
     }
 
-    @PostMapping(bookUrl + "/insertBook")
-    public void insertBook(@RequestBody Map<String, Object> map) {
-        bookService.insertBook(map);
+    //책 등록
+    @RequestMapping(bookUrl + "/insertBook")
+    public Result insertBook(@RequestBody Map<String, Object> map) {
+
+        Result result = bookService.insertBook(map);
+
+        return result;
+    }
+
+    //책 삭제
+    @RequestMapping(bookUrl + "/deleteBook")
+    public Result deleteBook(@RequestParam Long bookKey) {
+        Result result = bookService.deleteBook(bookKey);
+
+        return result;
     }
 
 }

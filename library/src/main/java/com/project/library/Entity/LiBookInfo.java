@@ -11,8 +11,8 @@ import java.util.Date;
 public class LiBookInfo {
     @Id
     @Column(name = "BOOK_KEY")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bookKey")
-    @SequenceGenerator(name = "bookKey", sequenceName = "bookKey", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "BOOKKEY")
+    @SequenceGenerator(name = "BOOKKEY", sequenceName = "BOOKKEY", allocationSize = 1)
     private Long bookKey;
 
     @Column(name = "BOOK_NAME")
@@ -24,8 +24,8 @@ public class LiBookInfo {
     @Column(name = "BOOK_GENRE")
     private String bookGenre; //책 장르
 
-    @Column(name = "BOOK_CNT")
-    private Long bookCnt; //책 권 수
+    @Column(name = "BOOK_STATUS")
+    private int bookStatus; //책 상태 0:대여 가능 1:대여 중
 
     @Column(name = "DATE_REG")
     private Date dateReg; //책 입고일

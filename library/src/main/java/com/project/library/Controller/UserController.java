@@ -20,7 +20,7 @@ public class UserController {
 
     final String userUrl = "/user";
 
-    @GetMapping(userUrl + "/findUserList")
+    @GetMapping(userUrl + "/user/findUserList")
     public Map<String,Object> findUserList() {
         Map<String, Object> map = userService.findUserList();
         

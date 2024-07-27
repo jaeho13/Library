@@ -20,6 +20,13 @@ public interface LiBookInfoRepository extends JpaRepository<LiBookInfo, Long> {
     @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE IS_DELETED = 0 AND BOOK_GENRE LIKE :genre", nativeQuery = true)
     int countBookGenre(@Param(value = "genre") String genre);
 
+    @Query(value = "SELECT * FROM LI_BOOK_INFO bi WHERE bi.BOOK_KEY = :bookKey AND bi.BOOK_STATUS = 0 AND IS_DELETED = 0", nativeQuery = true)
+    List<LiBookInfo> findByBookStatus(@Param(value = "bookKey") Long bookKey);
+
+    @Query(value = "UPDATE LI_BOOK_INFO b SET b.IS_DELETED = 1 WHERE b.BOOK_KEY = :bookKey", nativeQuery = true)
+    void deleteBookInfo(@Param(value = "bookKey") Long bookKey);
+
+
 //    @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE BOOK_GENRE LIKE '%인문%' AND IS_DELETED = 0", nativeQuery = true)
 //    int findByHumanities();
 //

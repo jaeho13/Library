@@ -9,5 +9,5 @@ import java.util.Map;
 @Data
 public class Result {
     private boolean result; //결과 값
-    private Map<String, Object> resultMap; //결과
+    private String resultMsg; //결과 메시지
 }
