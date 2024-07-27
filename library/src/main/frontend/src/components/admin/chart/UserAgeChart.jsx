@@ -107,16 +107,19 @@ const PieChartBind = styled.div`
 const BarChartSize = styled.div`
     /* width: 100%; */
     height: 30vh;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
-`;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+`
 
 const UserTotalCnt = styled.div`
     width: 100%;
     height: 10vh;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
