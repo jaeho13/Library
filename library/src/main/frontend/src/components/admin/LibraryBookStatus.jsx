@@ -65,7 +65,6 @@ const LibraryBookStatus = () => {
                         <BookTitle>책 제목</BookTitle>
                         <BookWriter>작가</BookWriter>
                         <BookGenre>장르</BookGenre>
-                        <BookCount>권 수</BookCount>
                         <BookDate>입고일</BookDate>
                     </BookInfoListHeader>
 
@@ -76,7 +75,6 @@ const LibraryBookStatus = () => {
                                 <BookTitle>{item.bookName}</BookTitle>
                                 <BookWriter>{item.bookWriter}</BookWriter>
                                 <BookGenre>{item.bookGenre}</BookGenre>
-                                <BookCount>{item.bookCnt}</BookCount>
                                 <BookDate>{rentDate(item.dateReg)}</BookDate>
                             </BookInfoList>
                         )
@@ -172,7 +170,7 @@ const BookCheck = styled.div`
 `
 
 const BookTitle = styled.div`
-    width: 25%;
+    width: 35%;
     height: 5vh;
     border-right: 2px solid black;
     display: flex;
@@ -198,15 +196,6 @@ const BookGenre = styled.div`
     align-items: center;
 `
 
-const BookCount = styled.div`
-    width: 10%;
-    height: 5vh;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
 const BookDate = styled.div`
     width: 20%;
     height: 5vh;
@@ -218,7 +207,7 @@ const BookDate = styled.div`
 
 const PaginationContainer = styled.div`
     width: 100%;
-    height: 5vh;
+    height: 8vh;
     display: flex;
     justify-content: center;
     align-items: center;
