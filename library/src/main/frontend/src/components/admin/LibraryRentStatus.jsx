@@ -38,6 +38,19 @@ const LibraryRentStatus = () => {
         setItemOffset(newOffset);
     };
 
+    const rentDate = (dateString) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const returnDate = (dateString, days) => {
+        const date = new Date(dateString);
+        date.setDate(date.getDate() + days);
+        return rentDate(date);
+    };
 
     return (
         <>
@@ -61,8 +74,8 @@ const LibraryRentStatus = () => {
                                 <BookName>{item.liUserInfo.name}</BookName>
                                 <BookId>{item.liUserInfo.id}</BookId>
                                 <BookTitle>{item.liBookInfo.bookName}</BookTitle>
-                                <BookRentDay>{item.dateReg}</BookRentDay>
-                                <BookRentReturn>대여날짜 + 14일</BookRentReturn>
+                                <BookRentDay>{rentDate(item.dateReg)}</BookRentDay>
+                                <BookRentReturn>{returnDate(item.dateReg, 14)}</BookRentReturn>
                             </BookRentList>
                         )
                     })}
