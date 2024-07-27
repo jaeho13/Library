@@ -110,12 +110,12 @@ const BoardBind = styled.div`
 const BookRentListBind = styled.div`
     width: 100%;
     height: 60vh;
-    border: 2px solid red;
+    border-bottom: 2px solid black
 `
 
 const BookRentList = styled.div`
     height: 5vh;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -124,7 +124,8 @@ const BookRentList = styled.div`
 const BookName = styled.div`
     width: 15%;
     height: 5vh;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,7 +134,8 @@ const BookName = styled.div`
 const BookId = styled.div`
     width: 15%;
     height: 5vh;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,25 +144,8 @@ const BookId = styled.div`
 const BookTitle = styled.div`
     width: 40%;
     height: 5vh;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookWriter = styled.div`
-    width: 15%;
-    height: 5vh;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookGenre = styled.div`
-    width: 15%;
-    height: 5vh;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,7 +154,8 @@ const BookGenre = styled.div`
 const BookRentDay = styled.div`
     width: 15%;
     height: 5vh;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,7 +164,7 @@ const BookRentDay = styled.div`
 const BookRentReturn = styled.div`
     width: 15%;
     height: 5vh;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;

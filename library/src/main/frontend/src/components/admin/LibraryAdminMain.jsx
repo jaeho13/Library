@@ -48,7 +48,6 @@ const ChartBind = styled.div`
 const ChartNameBind = styled.div`
     width: 100%;
     height: 20vh;
-    border: 2px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -57,18 +56,18 @@ const ChartNameBind = styled.div`
 const ChartName = styled.div`
     width: 30%;
     height: 10vh;
-    border: 2px solid red;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    color: white;
 `
 
 const ChartSize = styled.div`
     width: 100%;
     height: 40vh;
-    border: 2px solid green;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;

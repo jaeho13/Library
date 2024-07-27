@@ -112,7 +112,7 @@ const BoardBind = styled.div`
 const BookInfoBind = styled.div`
     width: 100%;
     height: 60vh;
-    border: 2px solid red;
+    border-bottom: 2px solid black;
 `
 
 const BookManage = styled.div`
@@ -120,14 +120,13 @@ const BookManage = styled.div`
     height: 10vh;
     display: flex;
     flex-direction: row;
-    border: 2px solid black;
     align-items: center;
 `
 
 const BookAdd = styled.div`
     width: 10%;
     height: 5vh;
-    border: 2px solid blue;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,7 +136,7 @@ const BookAdd = styled.div`
 const BookRemove = styled.div`
     width: 10%;
     height: 5vh;
-    border: 2px solid blue;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +145,8 @@ const BookRemove = styled.div`
 
 const BookInfoListHeader = styled.div`
     height: 5vh;
-    border: 2px solid blue;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -155,7 +155,7 @@ const BookInfoListHeader = styled.div`
 
 const BookInfoList = styled.div`
     height: 5vh;
-    border: 2px solid blue;
+    border-bottom: 2px solid black;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -165,7 +165,7 @@ const BookInfoList = styled.div`
 const BookCheck = styled.div`
     width: 5%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,7 +174,7 @@ const BookCheck = styled.div`
 const BookTitle = styled.div`
     width: 25%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -183,7 +183,7 @@ const BookTitle = styled.div`
 const BookWriter = styled.div`
     width: 25%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -192,7 +192,7 @@ const BookWriter = styled.div`
 const BookGenre = styled.div`
     width: 15%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -201,7 +201,7 @@ const BookGenre = styled.div`
 const BookCount = styled.div`
     width: 10%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -210,7 +210,7 @@ const BookCount = styled.div`
 const BookDate = styled.div`
     width: 20%;
     height: 5vh;
-    border: 2px solid black;
+    border-right: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,4 +237,4 @@ const PaginationContainer = styled.div`
     .pagination li.active {
         font-weight: bold;
     }
-`;
+`
