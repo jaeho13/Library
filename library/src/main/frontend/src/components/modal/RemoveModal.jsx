@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 
-const Modal = ({ onClose }) => {
+const RemoveModal = ({ onClose }) => {
 
     const handleBackgroundClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -23,7 +23,7 @@ const Modal = ({ onClose }) => {
     )
 }
 
-export default Modal;
+export default RemoveModal;
 
 const ModalBackground = styled.div`
     position: fixed;
@@ -41,7 +41,7 @@ const ModalBackground = styled.div`
 const ModalWindow = styled.div`
     width: 400px;
     height: 200px;
-    border: 2px solid red;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
