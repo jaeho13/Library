@@ -4,7 +4,8 @@ import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
-import Modal from "../modal/Modal";
+import RemoveModal from "../modal/RemoveModal";
+import AddModal from "../modal/AddModal";
 
 const LibraryBookStatus = () => {
 
@@ -14,7 +15,8 @@ const LibraryBookStatus = () => {
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 7;
     const [checkedList, setCheckedList] = useState({});
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [addModalOpen, setAddModalOpen] = useState(false);
+    const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
 
     useEffect(() => {
@@ -56,8 +58,12 @@ const LibraryBookStatus = () => {
         }));
     };
 
-    const userRemove = () => {
-        setIsModalOpen(true);
+    const bookAdd = () => {
+        setAddModalOpen(true);
+    };
+
+    const bookRemove = () => {
+        setRemoveModalOpen(true);
     };
 
     return (
@@ -70,8 +76,8 @@ const LibraryBookStatus = () => {
 
                 <BookInfoBind>
                     <BookManage>
-                        <BookAdd>도서 추가</BookAdd>
-                        <BookRemove onClick={userRemove}>도서 삭제</BookRemove>
+                        <BookAdd onClick={bookAdd} type="book">도서 추가</BookAdd>
+                        <BookRemove onClick={bookRemove}>도서 삭제</BookRemove>
                     </BookManage>
 
                     <BookInfoListHeader>
@@ -115,7 +121,8 @@ const LibraryBookStatus = () => {
                 </BookInfoBind>
             </BoardBind>
 
-            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="book" />}
+            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
         </>
     )
 }
