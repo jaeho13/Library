@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
@@ -63,8 +64,8 @@ public class BookController {
 
     //책 삭제
     @RequestMapping(bookUrl + "/deleteBook")
-    public Result deleteBook(@RequestParam Long bookKey) {
-        Result result = bookService.deleteBook(bookKey);
+    public Result deleteBook(@RequestBody List<Long> bookKeyList) {
+        Result result = bookService.deleteBook(bookKeyList);
 
         return result;
     }

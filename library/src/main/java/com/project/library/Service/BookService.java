@@ -113,13 +113,16 @@ public class BookService {
 
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public Result deleteBook(Long bookKey) {
+    public Result deleteBook(List<Long> bookKeyList) {
         Result result = new Result();
         result.setResult(false);
         try {
-            List<LiBookInfo> bookInfo = liBookInfoRepository.findByBookStatus(bookKey);
-            if (bookInfo.size() > 0) {
-                liBookInfoRepository.deleteById(bookKey);
+            for (int i = 0; i > 0; i++) {
+                Long bookKey = bookKeyList.get(i);
+                List<LiBookInfo> bookInfo = liBookInfoRepository.findByBookStatus(bookKey);
+                if (bookInfo.size() > 0) {
+                    liBookInfoRepository.deleteById(bookKey);
+                }
                 result.setResult(true);
                 return result;
             }
