@@ -39,7 +39,7 @@ const UserAgeChart = () => {
         const loadUserAge = async () => {
             try {
                 const response = await axios.get('/user/chartUserAge');
-                const ageData = response.data.age[0];
+                const ageData = response.data.age;
                 setUserCnt(response.data.userCnt)
                 updateChartData(ageData);
                 console.log("유저 나이 데이터 들어왔다");
