@@ -1,32 +1,62 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const AddModal = ({ onClose, type }) => {
-    const [formData, setFormData] = useState({});
 
-    const handleBackgroundClick = (e) => {
+    const bookTitleRef = useRef(null);
+    const writerRef = useRef(null);
+    const genreRef = useRef(null);
+
+    const idRef = useRef(null);
+    const passwordRef = useRef(null);
+    const nameRef = useRef(null);
+    const sexRef = useRef(null);
+    const birthRef = useRef(null);
+
+    const modalClose = (e) => {
         if (e.target === e.currentTarget) {
             onClose();
         }
     };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
-
-    const handleSubmit = () => {
-        console.log(formData); // 여기서 서버로 데이터 전송 등의 작업을 수행할 수 있습니다.
+    const inputCheck = () => {
+        if (type === "book") {
+            if (!bookTitleRef.current.value) {
+                alert("책 제목을 입력해 주세요")
+                return;
+            } else if (!writerRef.current.value) {
+                alert("작가를 입력해 주세요")
+                return;
+            } else if (!genreRef.current.value) {
+                alert("장르를 입력해 주세요")
+                return;
+            }
+        } else if (type === "user") {
+            if (!idRef.current.value) {
+                alert("아이디를 입력해 주세요")
+                return;
+            } else if (!passwordRef.current.value) {
+                alert("비밀번호를 입력해 주세요")
+                return;
+            } else if (!nameRef.current.value) {
+                alert("이름을 입력해 주세요")
+                return;
+            } else if (!sexRef.current.value) {
+                alert("성별을 선택해 주세요")
+                return;
+            } else if (!birthRef.current.value) {
+                alert("날짜를 선택해 주세요")
+                return;
+            }
+        }
+        alert("추가 되었습니다.")
         onClose();
-    };
+    }
 
     return (
         <>
-            <ModalBackground onClick={handleBackgroundClick}>
-                <ModalWindow>
+            <ModalBackground onClick={modalClose}>
+                <ModalWindow type={type}>
                     {type === "book" && (
                         <>
                             {/* <Label htmlFor="bookTitle">책 제목</Label>
@@ -38,49 +68,28 @@ const AddModal = ({ onClose, type }) => {
                             <Label htmlFor="genre">장르</Label>
                             <Input id="genre" name="genre" /> */}
 
-
                             <Label>책 제목</Label>
-                            <Input />
+                            <Input ref={bookTitleRef} />
 
                             <Label>작가</Label>
-                            <Input />
+                            <Input ref={writerRef} />
 
                             <Label>장르</Label>
-                            <Input />
+                            <Select ref={sexRef}>
+                                <option value="">장르</option>
+                                <option value="art">예술</option>
+                                <option value="humanities">인문</option>
+                                <option value="trip">여행</option>
+                                <option value="science">과학</option>
+                                <option value="essay">에세이</option>
+                                <option value="economy">경제</option>
+                                <option value="novel">소설</option>
+                            </Select>
                         </>
                     )}
 
-
-                    {/* {type === "book" && (
-    <>
-        <Label>책 제목</Label>
-        <Input name="bookName" onChange={handleChange} />
-        <Label>작가</Label>
-        <Input name="author" onChange={handleChange} />
-        <Label>장르</Label>
-        <Input name="genre" onChange={handleChange} />
-    </>
-)}
-{type === "user" && (
-    <>
-        <Label>아이디</Label>
-        <Input name="username" onChange={handleChange} />
-        <Label>비밀번호</Label>
-        <Input name="password" type="password" onChange={handleChange} />
-        <Label>이름</Label>
-        <Input name="name" onChange={handleChange} />
-        <Label>성별</Label>
-        <Input name="gender" onChange={handleChange} />
-        <Label>생년월일</Label>
-        <Input name="birthdate" type="date" onChange={handleChange} />
-    </>
-)} */}
-
-                    {/* 아이디
-비밀번호
-이름
-성별
-생년월일 */}
+                    {/* <Label>작가</Label>
+                        <Input name="author" onChange={handleChange} /> */}
 
                     {type === "user" && (
                         <>
@@ -100,22 +109,26 @@ const AddModal = ({ onClose, type }) => {
                             <Input id="birth" name="birth" type="date" /> */}
 
                             <Label>아이디</Label>
-                            <Input />
+                            <Input ref={idRef} />
 
                             <Label>비밀번호</Label>
-                            <Input type="password" />
+                            <Input ref={passwordRef} type="password" />
 
                             <Label>이름</Label>
-                            <Input />
+                            <Input ref={nameRef} />
 
                             <Label>성별</Label>
-                            <Input />
+                            <Select ref={sexRef}>
+                                <option value="">성별</option>
+                                <option value="male">남성</option>
+                                <option value="female">여성</option>
+                            </Select>
 
                             <Label>생년월일</Label>
-                            <Input type="date" />
+                            <Input ref={birthRef} type="date" />
                         </>
                     )}
-                    <ModalBtn onClick={handleSubmit}>확인</ModalBtn>
+                    <ModalBtn onClick={inputCheck}>확인</ModalBtn>
                 </ModalWindow>
             </ModalBackground>
         </>
@@ -138,13 +151,11 @@ const ModalBackground = styled.div`
 `
 
 const ModalWindow = styled.div`
-    /* width: 400px; */
-    /* height: 200px; */
     width: 40%;
     max-width: 400px;
     min-width: 400px;
-    height: 35vh;
-    min-height: 200px;
+    height: ${({ type }) => (type === 'book' ? '23vh' : '35vh')};
+    min-height: ${({ type }) => (type === 'book' ? '200px' : '300px')};
     border: 2px solid black;
     display: flex;
     flex-direction: column;
@@ -171,6 +182,15 @@ const Input = styled.input`
     border-radius: 4px;
 `
 
+const Select = styled.select`
+    width: 83%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`
+
+
 const ModalBtn = styled.button`
     width: 100px;
     height: 30px;
@@ -180,18 +200,3 @@ const ModalBtn = styled.button`
     bottom: 20px;
     right: 20px;
 `
-
-
-
-
-// const Label = styled.label`
-//     margin: 10px 0 5px;
-// `;
-
-// const Input = styled.input`
-// width: 80%;
-// padding: 5px;
-// margin-bottom: 10px;
-// border: 1px solid #ccc;
-// border-radius: 4px;
-// `;
