@@ -12,7 +12,7 @@ const LibraryUserStatus = () => {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 7;
-    const [checkedItems, setCheckedItems] = useState({});
+    const [checkedList, setCheckedList] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
@@ -40,13 +40,13 @@ const LibraryUserStatus = () => {
     };
 
     const boxCheck = (userKey) => {
-        setCheckedItems((prevCheckedItems) => ({
+        setCheckedList((prevCheckedItems) => ({
             ...prevCheckedItems,
             [userKey]: !prevCheckedItems[userKey],
         }));
     };
 
-    const handleUserRemove = () => {
+    const userRemove = () => {
         setIsModalOpen(true);
     };
 
@@ -61,7 +61,7 @@ const LibraryUserStatus = () => {
                 <UserListBind>
                     <UserManage>
                         <UserAdd>회원 추가</UserAdd>
-                        <UserRemove onClick={handleUserRemove}>회원 삭제</UserRemove>
+                        <UserRemove onClick={userRemove}>회원 삭제</UserRemove>
                     </UserManage>
 
                     <UserListHeader>
@@ -79,7 +79,7 @@ const LibraryUserStatus = () => {
                                 <UserCheck>
                                     <input
                                         type="checkbox"
-                                        checked={!!checkedItems[item.userKey]}
+                                        checked={!!checkedList[item.userKey]}
                                         onChange={() => boxCheck(item.userKey)}
                                     />
                                 </UserCheck>
@@ -108,8 +108,7 @@ const LibraryUserStatus = () => {
                 </UserListBind>
             </BoardBind>
 
-            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />} {/* 모달 창 표시 */}
-
+            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
         </>
     );
 };

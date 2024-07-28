@@ -4,6 +4,7 @@ import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import Modal from "../modal/Modal";
 
 const LibraryBookStatus = () => {
 
@@ -12,6 +13,8 @@ const LibraryBookStatus = () => {
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 7;
+    const [checkedList, setCheckedList] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const LibraryBookStatus = () => {
         setPageCount(Math.ceil(bookList.length / itemsPerPage));
     }, [itemOffset, itemsPerPage, bookList]);
 
-    const handlePageClick = (event) => {
+    const pageChange = (event) => {
         const newOffset = (event.selected * itemsPerPage) % bookList.length;
         setItemOffset(newOffset);
     };
@@ -44,6 +47,17 @@ const LibraryBookStatus = () => {
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
+    };
+
+    const boxCheck = (bookKey) => {
+        setCheckedList((prevCheckedItems) => ({
+            ...prevCheckedItems,
+            [bookKey]: !prevCheckedItems[bookKey],
+        }));
+    };
+
+    const userRemove = () => {
+        setIsModalOpen(true);
     };
 
     return (
@@ -57,7 +71,7 @@ const LibraryBookStatus = () => {
                 <BookInfoBind>
                     <BookManage>
                         <BookAdd>도서 추가</BookAdd>
-                        <BookRemove>도서 삭제</BookRemove>
+                        <BookRemove onClick={userRemove}>도서 삭제</BookRemove>
                     </BookManage>
 
                     <BookInfoListHeader>
@@ -71,7 +85,13 @@ const LibraryBookStatus = () => {
                     {currentItems.length > 0 && currentItems.map((item, index) => {
                         return (
                             <BookInfoList key={index}>
-                                <BookCheck />
+                                <BookCheck>
+                                    <input
+                                        type="checkbox"
+                                        checked={!!checkedList[item.bookKey]}
+                                        onChange={() => boxCheck(item.bookKey)}
+                                    />
+                                </BookCheck>
                                 <BookTitle>{item.bookName}</BookTitle>
                                 <BookWriter>{item.bookWriter}</BookWriter>
                                 <BookGenre>{item.bookGenre}</BookGenre>
@@ -84,7 +104,7 @@ const LibraryBookStatus = () => {
                         <ReactPaginate
                             breakLabel="..."
                             nextLabel=">"
-                            onPageChange={handlePageClick}
+                            onPageChange={pageChange}
                             pageRangeDisplayed={5}
                             pageCount={pageCount}
                             previousLabel="<"
@@ -93,9 +113,9 @@ const LibraryBookStatus = () => {
                         />
                     </PaginationContainer>
                 </BookInfoBind>
-
             </BoardBind>
 
+            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
         </>
     )
 }
