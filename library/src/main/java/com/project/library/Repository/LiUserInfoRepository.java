@@ -16,12 +16,12 @@ public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
     LiUserInfo findUser(@Param(value = "id") String id, @Param(value = "pwd") String pwd);
 
     @Query(value = "SELECT " +
-            "SUM(CASE WHEN l.AGE BETWEEN 0 AND 19 THEN 1 ELSE 0 END), " +
-            "SUM(CASE WHEN l.AGE BETWEEN 20 AND 29 THEN 1 ELSE 0 END), " +
-            "SUM(CASE WHEN l.AGE BETWEEN 30 AND 39 THEN 1 ELSE 0 END), " +
-            "SUM(CASE WHEN l.AGE BETWEEN 40 AND 49 THEN 1 ELSE 0 END), " +
-            "SUM(CASE WHEN l.AGE BETWEEN 50 AND 59 THEN 1 ELSE 0 END), " +
-            "SUM(CASE WHEN l.AGE BETWEEN 60 AND 69 THEN 1 ELSE 0 END) " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 0 AND 19 THEN 1 ELSE 0 END) AS \"0-19\", " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 20 AND 29 THEN 1 ELSE 0 END) AS \"20-29\", " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 30 AND 39 THEN 1 ELSE 0 END) AS \"30-39\", " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 40 AND 49 THEN 1 ELSE 0 END) AS \"40-49\", " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 50 AND 59 THEN 1 ELSE 0 END) AS \"50-59\", " +
+            "SUM(CASE WHEN TRUNC(MONTHS_BETWEEN(SYSDATE, TO_DATE(l.AGE, 'YYYYMMDD')) / 12) BETWEEN 60 AND 69 THEN 1 ELSE 0 END) AS \"60-69\" " +
             "FROM LI_USER_INFO l", nativeQuery = true)
     List<Object[]> findUserAge();
 
