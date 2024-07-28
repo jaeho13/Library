@@ -4,7 +4,8 @@ import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
-import Modal from "../modal/Modal";
+import AddModal from "../modal/AddModal";
+import RemoveModal from "../modal/RemoveModal";
 
 const LibraryUserStatus = () => {
     const [userList, setUserList] = useState([]);
@@ -13,7 +14,8 @@ const LibraryUserStatus = () => {
     const [itemOffset, setItemOffset] = useState(0);
     const itemsPerPage = 7;
     const [checkedList, setCheckedList] = useState({});
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [addModalOpen, setAddModalOpen] = useState(false);
+    const [removeModalOpen, setRemoveModalOpen] = useState(false);
 
     useEffect(() => {
         const userListLoad = async () => {
@@ -46,8 +48,12 @@ const LibraryUserStatus = () => {
         }));
     };
 
+    const userAdd = () => {
+        setAddModalOpen(true);
+    };
+
     const userRemove = () => {
-        setIsModalOpen(true);
+        setRemoveModalOpen(true);
     };
 
     return (
@@ -60,7 +66,7 @@ const LibraryUserStatus = () => {
 
                 <UserListBind>
                     <UserManage>
-                        <UserAdd>회원 추가</UserAdd>
+                        <UserAdd onClick={userAdd} type="user">회원 추가</UserAdd>
                         <UserRemove onClick={userRemove}>회원 삭제</UserRemove>
                     </UserManage>
 
@@ -108,7 +114,8 @@ const LibraryUserStatus = () => {
                 </UserListBind>
             </BoardBind>
 
-            {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="user" />}
+            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
         </>
     );
 };
