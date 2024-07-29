@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
@@ -19,7 +20,11 @@ const AddModal = ({ onClose, type }) => {
         }
     };
 
-    const inputCheck = () => {
+    const [bookName, setBookName] = useState();
+    const [bookWriter, setBookWriter] = useState();
+    const [bookGenre, setBookGenre] = useState();
+
+    const inputCheck = async () => {
         if (type === "book") {
             if (!bookTitleRef.current.value) {
                 alert("책 제목을 입력해 주세요")
@@ -31,6 +36,19 @@ const AddModal = ({ onClose, type }) => {
                 alert("장르를 입력해 주세요")
                 return;
             }
+
+            axios.post("/book/insertBook", {
+                title: bookName,
+                writer: bookWriter,
+                genre: bookGenre,
+            }).then(response => {
+                console.log("도서 추가 성공")
+                alert("추가 되었습니다.")
+                onClose();
+            }).catch(error => {
+                console.log("도서 추가 실패")
+            })
+
         } else if (type === "user") {
             if (!idRef.current.value) {
                 alert("아이디를 입력해 주세요")
@@ -49,8 +67,6 @@ const AddModal = ({ onClose, type }) => {
                 return;
             }
         }
-        alert("추가 되었습니다.")
-        onClose();
     }
 
     return (
@@ -59,31 +75,31 @@ const AddModal = ({ onClose, type }) => {
                 <ModalWindow type={type}>
                     {type === "book" && (
                         <>
-                            {/* <Label htmlFor="bookTitle">책 제목</Label>
-                            <Input id="bookTitle" name="bookTitle" />
-
-                            <Label htmlFor="writer">작가</Label>
-                            <Input id="writer" name="writer" />
-
-                            <Label htmlFor="genre">장르</Label>
-                            <Input id="genre" name="genre" /> */}
-
                             <Label>책 제목</Label>
-                            <Input ref={bookTitleRef} />
+                            <Input
+                                ref={bookTitleRef}
+                                onChange={(e) => setBookName(e.target.value)}
+                            />
 
                             <Label>작가</Label>
-                            <Input ref={writerRef} />
+                            <Input
+                                ref={writerRef}
+                                onChange={(e) => setBookWriter(e.target.value)}
+                            />
 
                             <Label>장르</Label>
-                            <Select ref={sexRef}>
+                            <Select
+                                ref={genreRef}
+                                onChange={(e) => setBookGenre(e.target.value)}
+                            >
                                 <option value="">장르</option>
-                                <option value="art">예술</option>
-                                <option value="humanities">인문</option>
-                                <option value="trip">여행</option>
-                                <option value="science">과학</option>
-                                <option value="essay">에세이</option>
-                                <option value="economy">경제</option>
-                                <option value="novel">소설</option>
+                                <option value="예술">예술</option>
+                                <option value="인문">인문</option>
+                                <option value="여행">여행</option>
+                                <option value="과학">과학</option>
+                                <option value="에세이">에세이</option>
+                                <option value="경제">경제</option>
+                                <option value="소설">소설</option>
                             </Select>
                         </>
                     )}
