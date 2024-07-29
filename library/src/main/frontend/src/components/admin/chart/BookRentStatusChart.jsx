@@ -22,16 +22,6 @@ const BookRentStatusChart = () => {
         loadBookStatus();
     }, []);
 
-    // axios.get('/chartRentList')
-    // .then(function (Response) {
-    //     setRentCnt(Response.data.rentCnt);
-    //     setBookCnt(Response.data.bookCnt);
-    //     console.log("대여 현황 데이터 들어왔다");
-    // })
-    // .catch(function (error) {
-    //     console.log("대여 현황 데이터 안 들어왔다");
-    // })
-
     const data = [
         {
             name: '대여',
