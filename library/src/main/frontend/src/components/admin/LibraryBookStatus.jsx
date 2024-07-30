@@ -88,6 +88,10 @@ const LibraryBookStatus = () => {
                     <BookManage>
                         <BookAdd onClick={bookAdd} type="book">도서 추가</BookAdd>
                         <BookRemove onClick={bookRemove}>도서 삭제</BookRemove>
+                        <ColorListBind>
+                            <BookColorList />
+                            <BookColorListinfo> : 대여 도서</BookColorListinfo>
+                        </ColorListBind>
                     </BookManage>
 
                     <BookInfoListHeader>
@@ -108,10 +112,10 @@ const LibraryBookStatus = () => {
                                         onChange={() => boxCheck(item.bookKey)}
                                     />
                                 </BookCheck>
-                                <BookTitle>{item.bookName}</BookTitle>
-                                <BookWriter>{item.bookWriter}</BookWriter>
-                                <BookGenre>{item.bookGenre}</BookGenre>
-                                <BookDate>{rentDate(item.dateReg)}</BookDate>
+                                <BookTitle status={item.bookStatus}>{item.bookName}</BookTitle>
+                                <BookWriter status={item.bookStatus}>{item.bookWriter}</BookWriter>
+                                <BookGenre status={item.bookStatus}>{item.bookGenre}</BookGenre>
+                                <BookDate status={item.bookStatus}>{rentDate(item.dateReg)}</BookDate>
                             </BookInfoList>
                         )
                     })}
@@ -178,6 +182,25 @@ const BookRemove = styled.div`
     margin-left: 2%;
 `
 
+const ColorListBind = styled.div`
+    width: 75%;
+    display: flex;
+    justify-content: end;
+    /* border: 2px solid red; */
+`
+
+
+const BookColorList = styled.div`
+    width: 30px;
+    height: 3vh;
+    margin-left: 10px;
+    background-color: cornflowerblue;
+`
+
+const BookColorListinfo = styled.div`
+    margin-left: 10px;
+`
+
 const BookInfoListHeader = styled.div`
     height: 5vh;
     border-top: 2px solid black;
@@ -213,6 +236,8 @@ const BookTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${props => props.status === 1 ? 'white' : 'black'};
+    background-color: ${props => props.status === 1 ? 'cornflowerblue' : 'transparent'};
 `
 
 const BookWriter = styled.div`
@@ -222,6 +247,8 @@ const BookWriter = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${props => props.status === 1 ? 'white' : 'black'};
+    background-color: ${props => props.status === 1 ? 'cornflowerblue' : 'transparent'};
 `
 
 const BookGenre = styled.div`
@@ -231,6 +258,8 @@ const BookGenre = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${props => props.status === 1 ? 'white' : 'black'};
+    background-color: ${props => props.status === 1 ? 'cornflowerblue' : 'transparent'};
 `
 
 const BookDate = styled.div`
@@ -240,6 +269,8 @@ const BookDate = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    color: ${props => props.status === 1 ? 'white' : 'black'};
+    background-color: ${props => props.status === 1 ? 'cornflowerblue' : 'transparent'};
 `
 
 const PaginationContainer = styled.div`
