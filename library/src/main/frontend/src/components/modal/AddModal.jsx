@@ -71,12 +71,16 @@ const AddModal = ({ onClose, type }) => {
                 alert("날짜를 선택해 주세요")
                 return;
             }
+
+            const date = new Date(userAge);
+            const formattedDate = date.toISOString().split('T')[0].replace(/-/g, '');
+
             axios.post("/user/insertUser", {
                 id: userId,
                 pwd: userPassword,
                 name: userName,
                 sex: userSex,
-                age: userAge,
+                age: formattedDate,
             }).then(response => {
                 console.log("회원 추가 성공")
                 alert("추가 되었습니다.")
