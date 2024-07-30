@@ -1,10 +1,13 @@
 package com.project.library.Controller;
 
+import com.project.library.Entity.Result;
 import com.project.library.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -33,5 +36,11 @@ public class UserController {
         Map<String, Object> map = userService.chartUserAge();
 
         return map;
+    }
+
+    @RequestMapping(userUrl + "/insertUser")
+    public Result insertUser(@RequestBody Map<String, Object> map) {
+        Result result = userService.insertUser(map);
+        return result;
     }
 }
