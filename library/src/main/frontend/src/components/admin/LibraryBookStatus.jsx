@@ -66,6 +66,16 @@ const LibraryBookStatus = () => {
         setRemoveModalOpen(true);
     };
 
+    const bookListUpdate = async () => {
+        try {
+            const response = await axios.get("/book/findBookList");
+            setBookList(response.data.bookList);
+            console.log("책 리스트 데이터 갱신됨");
+        } catch (error) {
+            console.log("책 리스트 데이터 갱신 실패");
+        }
+    };
+
     return (
         <>
             <TopSide name="도서 관리" />
@@ -121,7 +131,7 @@ const LibraryBookStatus = () => {
                 </BookInfoBind>
             </BoardBind>
 
-            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="book" />}
+            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="book" onDataAdded={bookListUpdate} />}
             {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
         </>
     )

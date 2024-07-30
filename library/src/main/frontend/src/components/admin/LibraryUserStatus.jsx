@@ -56,6 +56,16 @@ const LibraryUserStatus = () => {
         setRemoveModalOpen(true);
     };
 
+    const userListUpdate = async () => {
+        try {
+            const response = await axios.get("/user/findUserList");
+            setUserList(response.data.userList);
+            console.log("유저 리스트 데이터 갱신됨");
+        } catch (error) {
+            console.log("유저 리스트 데이터 갱신 실패");
+        }
+    };
+
     return (
         <>
             <TopSide name="회원 관리" />
@@ -114,7 +124,7 @@ const LibraryUserStatus = () => {
                 </UserListBind>
             </BoardBind>
 
-            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="user" />}
+            {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="user" onDataAdded={userListUpdate} />}
             {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
         </>
     );

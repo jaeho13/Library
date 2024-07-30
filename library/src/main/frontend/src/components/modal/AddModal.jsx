@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-const AddModal = ({ onClose, type }) => {
+const AddModal = ({ onClose, onDataAdded, type }) => {
 
     const bookTitleRef = useRef(null);
     const writerRef = useRef(null);
@@ -49,6 +49,7 @@ const AddModal = ({ onClose, type }) => {
             }).then(response => {
                 console.log("도서 추가 성공")
                 alert("추가 되었습니다.")
+                onDataAdded(response.data);
                 onClose();
             }).catch(error => {
                 console.log("도서 추가 실패")
@@ -84,6 +85,7 @@ const AddModal = ({ onClose, type }) => {
             }).then(response => {
                 console.log("회원 추가 성공")
                 alert("추가 되었습니다.")
+                onDataAdded(response.data);
                 onClose();
             }).catch(error => {
                 console.log("회원 추가 실패")
