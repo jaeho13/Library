@@ -9,8 +9,8 @@ import lombok.Data;
 public class LiUserInfo {
     @Id
     @Column(name = "USER_KEY")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userKey")
-    @SequenceGenerator(name = "userKey", sequenceName = "userKey", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERKEY")
+    @SequenceGenerator(name = "USERKEY", sequenceName = "USERKEY", allocationSize = 1)
     private Long userKey;
 
     @Column(name = "ID")
