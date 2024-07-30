@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface LiBookInfoRepository extends JpaRepository<LiBookInfo, Long> {
 
-    @Query(value = "SELECT * FROM LI_BOOK_INFO WHERE IS_DELETED = 0", nativeQuery = true)
+    @Query(value = "SELECT * FROM LI_BOOK_INFO WHERE IS_DELETED = 0 ORDER BY BOOK_KEY DESC", nativeQuery = true)
     List<LiBookInfo> selectBook();
 
     @Query(value = "SELECT COUNT(*) FROM LI_BOOK_INFO WHERE IS_DELETED = 0", nativeQuery = true)
