@@ -12,7 +12,7 @@ const AddModal = ({ onClose, type }) => {
     const passwordRef = useRef(null);
     const nameRef = useRef(null);
     const sexRef = useRef(null);
-    const birthRef = useRef(null);
+    const ageRef = useRef(null);
 
     const modalClose = (e) => {
         if (e.target === e.currentTarget) {
@@ -20,9 +20,15 @@ const AddModal = ({ onClose, type }) => {
         }
     };
 
-    const [bookName, setBookName] = useState();
-    const [bookWriter, setBookWriter] = useState();
-    const [bookGenre, setBookGenre] = useState();
+    const [bookName, setBookName] = useState("");
+    const [bookWriter, setBookWriter] = useState("");
+    const [bookGenre, setBookGenre] = useState("");
+
+    const [userId, setUserId] = useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userSex, setUserSex] = useState("");
+    const [userAge, setUserAge] = useState("");
 
     const inputCheck = async () => {
         if (type === "book") {
@@ -36,7 +42,6 @@ const AddModal = ({ onClose, type }) => {
                 alert("장르를 입력해 주세요")
                 return;
             }
-
             axios.post("/book/insertBook", {
                 title: bookName,
                 writer: bookWriter,
@@ -62,10 +67,25 @@ const AddModal = ({ onClose, type }) => {
             } else if (!sexRef.current.value) {
                 alert("성별을 선택해 주세요")
                 return;
-            } else if (!birthRef.current.value) {
+            } else if (!ageRef.current.value) {
                 alert("날짜를 선택해 주세요")
                 return;
             }
+            axios.post("/user/insertUser", {
+                id: userId,
+                pwd: userPassword,
+                name: userName,
+                sex: userSex,
+                age: userAge,
+            }).then(response => {
+                console.log("회원 추가 성공")
+                alert("추가 되었습니다.")
+                onClose();
+            }).catch(error => {
+                console.log("회원 추가 실패")
+                alert("실패했습니다.")
+                onClose();
+            })
         }
     }
 
@@ -75,14 +95,16 @@ const AddModal = ({ onClose, type }) => {
                 <ModalWindow type={type}>
                     {type === "book" && (
                         <>
-                            <Label>책 제목</Label>
+                            <Label htmlFor="title">책 제목</Label>
                             <Input
+                                id="title"
                                 ref={bookTitleRef}
                                 onChange={(e) => setBookName(e.target.value)}
                             />
 
-                            <Label>작가</Label>
+                            <Label htmlFor="writer">작가</Label>
                             <Input
+                                id="writer"
                                 ref={writerRef}
                                 onChange={(e) => setBookWriter(e.target.value)}
                             />
@@ -103,45 +125,46 @@ const AddModal = ({ onClose, type }) => {
                             </Select>
                         </>
                     )}
-
-                    {/* <Label>작가</Label>
-                        <Input name="author" onChange={handleChange} /> */}
-
                     {type === "user" && (
                         <>
-                            {/* <Label htmlFor="id">아이디</Label>
-                            <Input id="id" name="id" />
+                            <Label htmlFor="id">아이디</Label>
+                            <Input
+                                id="id"
+                                ref={idRef}
+                                onChange={(e) => setUserId(e.target.value)}
+                            />
 
                             <Label htmlFor="password">비밀번호</Label>
-                            <Input id="password" name="password" type="password" />
+                            <Input
+                                id="password"
+                                type="password"
+                                ref={passwordRef}
+                                onChange={(e) => setUserPassword(e.target.value)}
+                            />
 
                             <Label htmlFor="name">이름</Label>
-                            <Input id="name" name="name" />
-
-                            <Label htmlFor="sex">성별</Label>
-                            <Input id="sex" name="sex" />
-
-                            <Label htmlFor="birth">생년월일</Label>
-                            <Input id="birth" name="birth" type="date" /> */}
-
-                            <Label>아이디</Label>
-                            <Input ref={idRef} />
-
-                            <Label>비밀번호</Label>
-                            <Input ref={passwordRef} type="password" />
-
-                            <Label>이름</Label>
-                            <Input ref={nameRef} />
+                            <Input
+                                id="name"
+                                ref={nameRef}
+                                onChange={(e) => setUserName(e.target.value)}
+                            />
 
                             <Label>성별</Label>
-                            <Select ref={sexRef}>
+                            <Select
+                                ref={sexRef}
+                                onChange={(e) => setUserSex(e.target.value)}
+                            >
                                 <option value="">성별</option>
-                                <option value="male">남성</option>
-                                <option value="female">여성</option>
+                                <option value="남자">남자</option>
+                                <option value="여자">여자</option>
                             </Select>
 
                             <Label>생년월일</Label>
-                            <Input ref={birthRef} type="date" />
+                            <Input
+                                ref={ageRef}
+                                type="date"
+                                onChange={(e) => setUserAge(e.target.value)}
+                            />
                         </>
                     )}
                     <ModalBtn onClick={inputCheck}>확인</ModalBtn>
