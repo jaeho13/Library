@@ -17,8 +17,7 @@ public interface LiRentListRepository extends JpaRepository<LiRentList, Long> {
             "JOIN rl.liUserInfo ui " +
             "JOIN rl.liBookInfo bi " +
             "WHERE bi.bookStatus = 1 " +
-            "AND rl.rentDeleted = 0" +
-            "ORDER BY rl.RENT_KEY DESC")
+            "AND rl.rentDeleted = 0 ORDER BY rl.rentKey DESC")
     List<RentListDTO> selectRentList();
 
     @Query("SELECT COUNT(*) " +
