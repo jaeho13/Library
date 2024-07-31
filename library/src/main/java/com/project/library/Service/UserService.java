@@ -40,7 +40,7 @@ public class UserService {
         }
         map.put("age", ageGroups);
         map.put("userCnt", liUserInfoRepository.countUserCnt());
-        ;        return map;
+        return map;
     }
 
     public Result insertUser(Map<String, Object> map) {
