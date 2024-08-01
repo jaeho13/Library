@@ -75,13 +75,16 @@ public class UserService {
 
         try {
             Long userKey = Long.parseLong(param);
-            //LiUserInfo userInfo = liUserInfoRepository.findUserInfo(userKey);
-            
-            liUserInfoRepository.deleteById(userKey);
+            LiUserInfo userInfo = liUserInfoRepository.findUserInfo(userKey);
+            if (userInfo != null) {
+                liUserInfoRepository.deleteById(userKey);
+                result.setResult(true);
+                result.setResultMsg("success");
 
+                return result;
+            }
         }catch (Exception e ) {
-
         }
-        return null;
+        return result;
     }
 }
