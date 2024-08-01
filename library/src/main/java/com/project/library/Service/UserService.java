@@ -68,4 +68,18 @@ public class UserService {
         }
         return result;
     }
+
+    public Result deleteUser(String param) {
+        Result result = new Result();
+        result.setResult(false);
+
+        try {
+            for (int i = 0; i > 0; i++) {
+                Long userKey = Long.parseLong(param);
+            }
+        }catch (Exception e ) {
+
+        }
+        return null;
+    }
 }

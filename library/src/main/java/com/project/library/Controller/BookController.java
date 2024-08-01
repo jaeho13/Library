@@ -64,8 +64,8 @@ public class BookController {
 
     //책 삭제
     @RequestMapping(bookUrl + "/deleteBook")
-    public Result deleteBook(@RequestBody List<Long> bookKeyList) {
-        Result result = bookService.deleteBook(bookKeyList);
+    public Result deleteBook(@RequestParam String bookKey) {
+        Result result = bookService.deleteBook(bookKey);
 
         return result;
     }
