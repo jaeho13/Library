@@ -121,8 +121,9 @@ public class BookService {
             LiBookInfo bookInfo = liBookInfoRepository.findByBookStatus(bookKey);
             if (bookInfo != null) {
                 liBookInfoRepository.deleteById(bookKey);
+                result.setResult(true);
+                return result;
             }
-            result.setResult(true);
             return result;
         } catch (Exception e) {
             result.setResultMsg("Unable to delete book");

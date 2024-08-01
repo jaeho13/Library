@@ -74,9 +74,11 @@ public class UserService {
         result.setResult(false);
 
         try {
-            for (int i = 0; i > 0; i++) {
-                Long userKey = Long.parseLong(param);
-            }
+            Long userKey = Long.parseLong(param);
+            //LiUserInfo userInfo = liUserInfoRepository.findUserInfo(userKey);
+            
+            liUserInfoRepository.deleteById(userKey);
+
         }catch (Exception e ) {
 
         }
