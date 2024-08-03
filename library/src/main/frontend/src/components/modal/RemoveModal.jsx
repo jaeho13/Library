@@ -5,26 +5,33 @@ import styled from "styled-components"
 
 const RemoveModal = ({ onClose, type }) => {
 
-    const handleBackgroundClick = (e) => {
+    const modalClose = (e) => {
         if (e.target === e.currentTarget) {
             onClose();
         }
     };
 
+    const deleteConfirm = () => {
+        alert("삭제 되었습니다.");
+        onClose();
+    };
+
     return (
         <>
-            <ModalBackground onClick={handleBackgroundClick}>
+            <ModalBackground onClick={modalClose}>
                 <ModalWindow type={type}>
                     {type === "book" && (
                         <>
                             선택한 도서 정보를 삭제하겠습니까??
-                            <ModalBtn onClick={onClose}>확인</ModalBtn>
+                            <ModalConfirmBtn onClick={deleteConfirm}>확인</ModalConfirmBtn>
+                            <ModalCancelBtn onClick={modalClose} >취소</ModalCancelBtn>
                         </>
                     )}
                     {type === "user" && (
                         <>
                             선택한 회원 정보를 삭제하겠습니까??
-                            <ModalBtn onClick={onClose}>확인</ModalBtn>
+                            <ModalConfirmBtn onClick={deleteConfirm}>확인</ModalConfirmBtn>
+                            <ModalCancelBtn onClick={modalClose} >취소</ModalCancelBtn>
                         </>
                     )}
                 </ModalWindow>
@@ -61,7 +68,18 @@ const ModalWindow = styled.div`
     z-index: 10;
 `
 
-const ModalBtn = styled.button`
+const ModalConfirmBtn = styled.button`
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+    cursor: pointer;
+`
+
+const ModalCancelBtn = styled.button`
     width: 100px;
     height: 30px;
     border: 2px solid black;
@@ -69,4 +87,5 @@ const ModalBtn = styled.button`
     position: absolute;
     bottom: 20px;
     right: 20px;
+    cursor: pointer;
 `

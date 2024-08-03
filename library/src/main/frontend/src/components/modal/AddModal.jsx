@@ -173,7 +173,8 @@ const AddModal = ({ onClose, onDataAdded, type }) => {
                             />
                         </>
                     )}
-                    <ModalBtn onClick={inputCheck}>확인</ModalBtn>
+                    <ModalConfirmBtn onClick={inputCheck}>확인</ModalConfirmBtn>
+                    <ModalCancelBtn onClick={modalClose} >취소</ModalCancelBtn>
                 </ModalWindow>
             </ModalBackground>
         </>
@@ -235,8 +236,18 @@ const Select = styled.select`
     border-radius: 4px;
 `
 
+const ModalConfirmBtn = styled.button`
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 20px;
+    right: 140px;
+    cursor: pointer;
+`
 
-const ModalBtn = styled.button`
+const ModalCancelBtn = styled.button`
     width: 100px;
     height: 30px;
     border: 2px solid black;
@@ -244,4 +255,5 @@ const ModalBtn = styled.button`
     position: absolute;
     bottom: 20px;
     right: 20px;
+    cursor: pointer;
 `
