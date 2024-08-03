@@ -48,11 +48,11 @@ const LibraryUserStatus = () => {
         }));
     };
 
-    const userAdd = () => {
+    const userAddModal = () => {
         setAddModalOpen(true);
     };
 
-    const userRemove = () => {
+    const userRemoveModal = () => {
         setRemoveModalOpen(true);
     };
 
@@ -76,8 +76,8 @@ const LibraryUserStatus = () => {
 
                 <UserListBind>
                     <UserManage>
-                        <UserAdd onClick={userAdd} type="user">회원 추가</UserAdd>
-                        <UserRemove onClick={userRemove}>회원 삭제</UserRemove>
+                        <UserAdd onClick={userAddModal} type="user">회원 추가</UserAdd>
+                        <UserRemove onClick={userRemoveModal}>회원 삭제</UserRemove>
                     </UserManage>
 
                     <UserListHeader>

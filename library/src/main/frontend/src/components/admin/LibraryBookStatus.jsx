@@ -58,11 +58,11 @@ const LibraryBookStatus = () => {
         }));
     };
 
-    const bookAdd = () => {
+    const bookAddModal = () => {
         setAddModalOpen(true);
     };
 
-    const bookRemove = () => {
+    const bookRemoveModal = () => {
         setRemoveModalOpen(true);
     };
 
@@ -86,8 +86,8 @@ const LibraryBookStatus = () => {
 
                 <BookInfoBind>
                     <BookManage>
-                        <BookAdd onClick={bookAdd} type="book">도서 추가</BookAdd>
-                        <BookRemove onClick={bookRemove}>도서 삭제</BookRemove>
+                        <BookAdd onClick={bookAddModal} type="book">도서 추가</BookAdd>
+                        <BookRemove onClick={bookRemoveModal}>도서 삭제</BookRemove>
                         <ColorListBind>
                             <BookColorList />
                             <BookColorListinfo> : 대여 도서</BookColorListinfo>
