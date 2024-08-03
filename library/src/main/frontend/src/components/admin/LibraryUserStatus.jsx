@@ -125,7 +125,7 @@ const LibraryUserStatus = () => {
             </BoardBind>
 
             {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="user" onDataAdded={userListUpdate} />}
-            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
+            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} type="user" />}
         </>
     );
 };

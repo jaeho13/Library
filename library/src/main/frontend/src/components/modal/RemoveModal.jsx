@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 
-const RemoveModal = ({ onClose }) => {
+const RemoveModal = ({ onClose, type }) => {
 
     const handleBackgroundClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -14,9 +14,19 @@ const RemoveModal = ({ onClose }) => {
     return (
         <>
             <ModalBackground onClick={handleBackgroundClick}>
-                <ModalWindow>
-                    삭제 되었습니다.
-                    <ModalBtn onClick={onClose}>확인</ModalBtn>
+                <ModalWindow type={type}>
+                    {type === "book" && (
+                        <>
+                            선택한 도서 정보를 삭제하겠습니까??
+                            <ModalBtn onClick={onClose}>확인</ModalBtn>
+                        </>
+                    )}
+                    {type === "user" && (
+                        <>
+                            선택한 회원 정보를 삭제하겠습니까??
+                            <ModalBtn onClick={onClose}>확인</ModalBtn>
+                        </>
+                    )}
                 </ModalWindow>
             </ModalBackground>
         </>

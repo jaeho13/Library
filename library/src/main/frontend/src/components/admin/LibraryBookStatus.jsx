@@ -146,7 +146,7 @@ const LibraryBookStatus = () => {
             </BoardBind>
 
             {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="book" onDataAdded={bookListUpdate} />}
-            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} />}
+            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} type="book" />}
         </>
     )
 }
