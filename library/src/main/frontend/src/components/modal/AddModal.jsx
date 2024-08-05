@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 const AddModal = ({ onClose, onDataAdded, type }) => {
 
-    const bookTitleRef = useRef(null);
-    const writerRef = useRef(null);
-    const genreRef = useRef(null);
+    const bookTitleRef = useRef("");
+    const writerRef = useRef("");
+    const genreRef = useRef("");
 
-    const idRef = useRef(null);
-    const passwordRef = useRef(null);
-    const nameRef = useRef(null);
-    const sexRef = useRef(null);
-    const ageRef = useRef(null);
+    const idRef = useRef();
+    const passwordRef = useRef("");
+    const nameRef = useRef("");
+    const sexRef = useRef("");
+    const ageRef = useRef("");
 
     const modalClose = (e) => {
         if (e.target === e.currentTarget) {
