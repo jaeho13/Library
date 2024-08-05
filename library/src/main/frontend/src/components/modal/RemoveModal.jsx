@@ -1,8 +1,9 @@
-import axios from "axios";
 import React from "react";
 import styled from "styled-components"
 
-const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
+
+
+const RemoveModal = ({ onClose, type }) => {
 
     const modalClose = (e) => {
         if (e.target === e.currentTarget) {
@@ -10,21 +11,9 @@ const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
         }
     };
 
-    const deleteConfirm = async () => {
-        try {
-            const userKeys = Object.keys(checkedList).filter(key => checkedList[key]);
-            if (userKeys.length === 0) {
-                alert("삭제할 항목을 선택해 주세요.");
-                return;
-            }
-            await axios.post("/user/deleteUser", { userKeys });
-            alert("삭제 되었습니다.");
-            console.log("유저 정보 삭제 실패");
-            onDataRemoved();
-            onClose();
-        } catch (error) {
-            console.log("유저 정보 삭제 실패");
-        }
+    const deleteConfirm = () => {
+        alert("삭제 되었습니다.");
+        onClose();
     };
 
     return (
