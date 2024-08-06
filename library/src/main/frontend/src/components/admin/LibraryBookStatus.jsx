@@ -76,16 +76,6 @@ const LibraryBookStatus = () => {
         }
     };
 
-    const bookListDelete = async () => {
-        try {
-            const response = await axios.post("/book/deleteBook")
-            setBookList(response.data.bookList);
-            console.log("책 리스트 데이터 삭제 됐다");
-        } catch (error) {
-            console.log("책 리스트 데이터 삭제 안 됐다")
-        }
-    }
-
     return (
         <>
             <TopSide name="도서 관리" />
@@ -146,7 +136,7 @@ const LibraryBookStatus = () => {
             </BoardBind>
 
             {addModalOpen && <AddModal onClose={() => setAddModalOpen(false)} type="book" onDataAdded={bookListUpdate} />}
-            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} type="book" />}
+            {removeModalOpen && <RemoveModal onClose={() => setRemoveModalOpen(false)} type="book" checkedList={checkedList} onDataRemoved={bookListUpdate} />}
         </>
     )
 }
