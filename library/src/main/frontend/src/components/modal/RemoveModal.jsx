@@ -10,19 +10,28 @@ const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
         }
     };
 
-    const deleteConfirm = async () => {
+    const userListDelete = async () => {
         try {
             const userKeys = Object.keys(checkedList).filter(key => checkedList[key]);
             if (userKeys.length === 0) {
-                alert("삭제할 항목을 선택해 주세요.");
+                alert("삭제할 회원을 선택해 주세요.");
+                onClose();
                 return;
             }
-            await axios.post("/user/deleteUser", { userKeys });
+            if (userKeys.length > 1) {
+                alert("삭제할 회원을 한 명씩 선택해 주세요.");
+                onClose();
+                return;
+            }
+            const userKey = userKeys[0]
+            await axios.post(`/user/deleteUser?userKey=${userKey}`);
             alert("삭제 되었습니다.");
             console.log("유저 정보 삭제 실패");
             onDataRemoved();
             onClose();
         } catch (error) {
+            alert("유저 정보 삭제 실패");
+            onClose();
             console.log("유저 정보 삭제 실패");
         }
     };
@@ -33,15 +42,15 @@ const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
                 <ModalWindow type={type}>
                     {type === "book" && (
                         <>
-                            선택한 도서 정보를 삭제하겠습니까??
-                            <ModalConfirmBtn onClick={deleteConfirm}>확인</ModalConfirmBtn>
+                            도서 정보를 삭제하겠습니까??
+                            <ModalConfirmBtn>확인</ModalConfirmBtn>
                             <ModalCancelBtn onClick={modalClose} >취소</ModalCancelBtn>
                         </>
                     )}
                     {type === "user" && (
                         <>
-                            선택한 회원 정보를 삭제하겠습니까??
-                            <ModalConfirmBtn onClick={deleteConfirm}>확인</ModalConfirmBtn>
+                            회원 정보를 삭제하겠습니까??
+                            <ModalConfirmBtn onClick={userListDelete}>확인</ModalConfirmBtn>
                             <ModalCancelBtn onClick={modalClose} >취소</ModalCancelBtn>
                         </>
                     )}
