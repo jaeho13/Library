@@ -84,18 +84,22 @@ const LoginBind = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     flex-direction: column;
 `
 
 const LibraryLogo = styled.div`
     width: 30%;
-    height: 15vh;
+    max-width: 400px;
+    min-width: 400px;
+    height: 10vh;
     border: 2px solid red;
 `
 
 const AccountCheck = styled.div`
     width: 30%;
+    max-width: 400px;
+    min-width: 400px;
     height: 20vh;
     border: 2px solid blue;
     margin-bottom: 10vh;
