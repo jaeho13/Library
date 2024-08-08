@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { Main, LeftMenu, LeftRentStatus } from "./styles/LeftSideStyle"
 
 const LeftSide = (props) => {
 
@@ -37,31 +37,3 @@ const LeftSide = (props) => {
 }
 
 export default LeftSide;
-
-const Main = styled.div`
-    width: 10%;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black;
-    /* border: 2px solid black; */
-    display: flex;
-    flex-direction: row;
-`
-
-const LeftMenu = styled.div`
-    width: 100%;
-    height: 60vh;
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: column;
-`
-
-const LeftRentStatus = styled.div`
-    height: 10vh;
-    border-bottom: 2px solid black;
-    /* border: 2px solid blue; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-`
