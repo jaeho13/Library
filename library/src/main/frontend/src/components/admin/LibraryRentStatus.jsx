@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
 import TopSide from "../side/TopSide";
 import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+import { BoardBind, BookRentListBind, BookRentList, BookName, BookId, BookTitle, BookRentDay, BookRentReturn, PaginationContainer } from "./stlyes/LibraryRentStatusStyle"
 
 const LibraryRentStatus = () => {
 
@@ -101,95 +101,3 @@ const LibraryRentStatus = () => {
 }
 
 export default LibraryRentStatus;
-
-const BoardBind = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
-const BookRentListBind = styled.div`
-    width: 100%;
-    height: 60vh;
-    border-bottom: 2px solid black
-`
-
-const BookRentList = styled.div`
-    height: 5vh;
-    /* border: 2px solid black; */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-`
-
-const BookName = styled.div`
-    width: 15%;
-    height: 5vh;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookId = styled.div`
-    width: 15%;
-    height: 5vh;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookTitle = styled.div`
-    width: 40%;
-    height: 5vh;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookRentDay = styled.div`
-    width: 15%;
-    height: 5vh;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const BookRentReturn = styled.div`
-    width: 15%;
-    height: 5vh;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const PaginationContainer = styled.div`
-    width: 100%;
-    height: 5vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .pagination {
-        display: flex;
-        list-style: none;
-        padding: 0;
-    }
-
-    .pagination li {
-        margin: 0 5px;
-        cursor: pointer;
-    }
-
-    .pagination li.active {
-        font-weight: bold;
-    }
-`;

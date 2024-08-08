@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import BookRentStatusChart from "./chart/BookRentStatusChart";
 import TopSide from "../side/TopSide";
 import BookStatusChart from "./chart/BookStatusChart";
 import UserAgeChart from "./chart/UserAgeChart";
 import LeftSide from "../side/LeftSide";
+import { BoardBind, ChartBind, ChartNameBind, ChartName, ChartSize } from "./stlyes/LibraryAdminMainStyle"
 
 const LibraryAdminMain = () => {
     return (
@@ -33,42 +33,3 @@ const LibraryAdminMain = () => {
 }
 
 export default LibraryAdminMain;
-
-const BoardBind = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
-const ChartBind = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-`
-
-const ChartNameBind = styled.div`
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-`
-
-const ChartName = styled.div`
-    width: 30%;
-    height: 10vh;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-const ChartSize = styled.div`
-    width: 100%;
-    height: 40vh;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    /* border: 2px solid black; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-`
