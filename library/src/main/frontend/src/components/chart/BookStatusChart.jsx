@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import styled from 'styled-components';
+import { PieChartBind, PieChartSize, PieChartName } from './stlyes/BookStatusChartStyles';
 
 const BookStatusChart = () => {
 
@@ -135,26 +135,3 @@ const BookStatusChart = () => {
 }
 
 export default BookStatusChart;
-
-const PieChartBind = styled.div`
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    border-right: 2px solid black;
-`
-
-const PieChartSize = styled.div`
-    width: 100%;
-    height: 30vh;
-    /* border: 2px solid red; */
-`
-
-const PieChartName = styled.div`
-    width: 100%;
-    height: 10vh;
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-`

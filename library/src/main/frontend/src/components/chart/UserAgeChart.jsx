@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import styled from 'styled-components';
 import axios from 'axios';
+import { PieChartBind, BarChartSize, UserTotalCnt } from './stlyes/UserAgeChartStyle';
 
 const UserAgeChart = () => {
 
@@ -96,32 +96,3 @@ const UserAgeChart = () => {
 };
 
 export default UserAgeChart;
-
-const PieChartBind = styled.div`
-    width: 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`
-
-const BarChartSize = styled.div`
-    /* width: 100%; */
-    height: 30vh;
-    /* border: 2px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-`
-
-const UserTotalCnt = styled.div`
-    width: 100%;
-    height: 10vh;
-    /* border: 2px solid black; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-`

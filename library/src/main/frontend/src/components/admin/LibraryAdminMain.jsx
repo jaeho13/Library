@@ -1,8 +1,8 @@
 import React from "react";
-import BookRentStatusChart from "./chart/BookRentStatusChart";
+import BookRentStatusChart from "../chart/BookRentStatusChart";
 import TopSide from "../side/TopSide";
-import BookStatusChart from "./chart/BookStatusChart";
-import UserAgeChart from "./chart/UserAgeChart";
+import BookStatusChart from "../chart/BookStatusChart";
+import UserAgeChart from "../chart/UserAgeChart"
 import LeftSide from "../side/LeftSide";
 import { BoardBind, ChartBind, ChartNameBind, ChartName, ChartSize } from "./stlyes/LibraryAdminMainStyle"
 
