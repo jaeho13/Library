@@ -6,6 +6,7 @@ import UserAgeChart from "../chart/UserAgeChart"
 import LeftSide from "../side/LeftSide";
 import { BoardBind, ChartBind, ChartNameBind, ChartName, ChartSize } from "./stlyes/LibraryAdminMainStyle"
 import SessionCheck from "../routes/SessionCheck";
+import TestChart from "../chart/TestChart";
 
 const LibraryAdminMain = () => {
 
@@ -26,7 +27,8 @@ const LibraryAdminMain = () => {
                     </ChartNameBind>
 
                     <ChartSize>
-                        <BookRentStatusChart />
+                        <TestChart />
+                        {/* <BookRentStatusChart /> */}
                         <BookStatusChart />
                         <UserAgeChart />
                     </ChartSize>
