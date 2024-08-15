@@ -28,6 +28,12 @@ const Login = () => {
         })
     }
 
+    const enterMove = (e) => {
+        if (e.key === 'Enter') {
+            checkLogin();
+        }
+    }
+
     return (
         <>
             <LoginBind>
@@ -60,6 +66,7 @@ const Login = () => {
                                 value={pwd}
                                 onChange={(e) => setPwd(e.target.value)}
                                 placeholder="password"
+                                onKeyDown={enterMove}
                             />
                         </PasswordBind>
 
