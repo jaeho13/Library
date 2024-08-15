@@ -7,6 +7,7 @@ const TopSide = (props) => {
     const navigate = useNavigate();
 
     const pageLogout = () => {
+        sessionStorage.clear();
         navigate("/")
     }
 
