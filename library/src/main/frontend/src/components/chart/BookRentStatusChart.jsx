@@ -68,10 +68,6 @@ const BookRentStatusChart = () => {
                                 startAngle={90} // 시작 각도
                                 endAngle={-270} // 끝 각도
                                 label={renderCustomizedLabel}
-                            // outerRadius={80}
-                            // fill="#8884d8"
-                            // dataKey="value"
-                            // style={{ border: '2px solid black' }}
                             >
                                 {data.map((entry, index) => (
                                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -84,7 +80,6 @@ const BookRentStatusChart = () => {
                 <PieChartName>
                     {data.map((entry, index) => (
                         <div
-                            // key={`legend-${index}`}
                             style={{
                                 color: COLORS[index % COLORS.length],
                                 fontWeight: 'bold'
@@ -94,8 +89,6 @@ const BookRentStatusChart = () => {
                     ))}
                 </PieChartName>
             </PieChartBind>
-
-
         </>
     )
 }
