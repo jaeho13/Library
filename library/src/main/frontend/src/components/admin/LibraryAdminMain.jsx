@@ -5,10 +5,14 @@ import BookStatusChart from "../chart/BookStatusChart";
 import UserAgeChart from "../chart/UserAgeChart"
 import LeftSide from "../side/LeftSide";
 import { BoardBind, ChartBind, ChartNameBind, ChartName, ChartSize } from "./stlyes/LibraryAdminMainStyle"
+import SessionCheck from "../routes/SessionCheck";
 
 const LibraryAdminMain = () => {
+
+
     return (
         <>
+            <SessionCheck />
             <TopSide name="관리자 페이지" />
 
             <BoardBind>

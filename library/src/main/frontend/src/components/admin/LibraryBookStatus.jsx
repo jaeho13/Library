@@ -6,6 +6,7 @@ import ReactPaginate from "react-paginate";
 import RemoveModal from "../modal/RemoveModal";
 import AddModal from "../modal/AddModal";
 import { BoardBind, BookInfoBind, BookManage, BookAdd, BookRemove, ColorListBind, BookColorList, BookColorListinfo, BookInfoListHeader, BookInfoList, BookCheck, BookTitle, BookWriter, BookGenre, BookDate, PaginationContainer } from "./stlyes/LibraryBookStatusStyle"
+import SessionCheck from "../routes/SessionCheck";
 
 const LibraryBookStatus = () => {
 
@@ -78,6 +79,7 @@ const LibraryBookStatus = () => {
 
     return (
         <>
+            <SessionCheck />
             <TopSide name="도서 관리" />
 
             <BoardBind>

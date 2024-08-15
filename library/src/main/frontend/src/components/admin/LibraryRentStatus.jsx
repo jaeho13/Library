@@ -4,6 +4,7 @@ import LeftSide from "../side/LeftSide";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
 import { BoardBind, BookRentListBind, BookRentList, BookName, BookId, BookTitle, BookRentDay, BookRentReturn, PaginationContainer } from "./stlyes/LibraryRentStatusStyle"
+import SessionCheck from "../routes/SessionCheck";
 
 const LibraryRentStatus = () => {
 
@@ -54,6 +55,7 @@ const LibraryRentStatus = () => {
 
     return (
         <>
+            <SessionCheck />
             <TopSide name="도서 대여 현황" />
 
             <BoardBind>

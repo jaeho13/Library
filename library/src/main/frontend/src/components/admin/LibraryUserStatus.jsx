@@ -6,6 +6,7 @@ import ReactPaginate from "react-paginate";
 import AddModal from "../modal/AddModal";
 import RemoveModal from "../modal/RemoveModal";
 import { BoardBind, UserListBind, UserManage, UserAdd, UserRemove, UserListHeader, UserList, UserCheck, UserNumber, UserId, UserName, UserSex, UserAge, PaginationContainer } from "./stlyes/LibraryUserStatusStyle"
+import SessionCheck from "../routes/SessionCheck";
 
 const LibraryUserStatus = () => {
     const [userList, setUserList] = useState([]);
@@ -68,6 +69,7 @@ const LibraryUserStatus = () => {
 
     return (
         <>
+            <SessionCheck />
             <TopSide name="회원 관리" />
 
             <BoardBind>

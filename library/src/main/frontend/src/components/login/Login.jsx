@@ -17,6 +17,7 @@ const Login = () => {
         }).then(response => {
             if (response.data.result) {
                 console.log("데이터 확인 성공")
+                sessionStorage.setItem("id", id);
                 navigate("/admin/main");
             } else {
                 alert("아이디 비밀번호를 확인해 주세요.")
