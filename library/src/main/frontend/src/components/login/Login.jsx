@@ -38,7 +38,9 @@ const Login = () => {
         <>
             <LoginBind>
                 <LibraryLogo>
-
+                    관리자 계정 <br />
+                    아이디 : admin <br />
+                    비밀번호 : 1234
                 </LibraryLogo>
                 <AccountCheck>
                     <InputBind>

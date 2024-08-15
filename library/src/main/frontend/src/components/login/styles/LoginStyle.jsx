@@ -18,7 +18,11 @@ export const LibraryLogo = styled.div`
     min-width: 400px;
     height: 10vh;
     min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
+    border-bottom: none;
 `
 
 export const AccountCheck = styled.div`
