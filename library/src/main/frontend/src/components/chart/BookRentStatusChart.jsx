@@ -1,12 +1,11 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-import { PieChartBind, PieChartSize, PieChartName } from './stlyes/BookRentStatusChartStyle';
+import React, { useEffect, useState } from "react";
+import { Pie } from "react-chartjs-2";
+import axios from "axios";
+import { LegendColor, LegendItem, LegendLabel, PieChartBind, PieChartName, PieChartSize } from "./stlyes/BookRentStatusChartStyle";
 
 const BookRentStatusChart = () => {
-
-    const [rentCnt, setRentCnt] = useState();
-    const [bookCnt, setBookCnt] = useState();
+    const [rentCnt, setRentCnt] = useState(0);
+    const [bookCnt, setBookCnt] = useState(0);
 
     useEffect(() => {
         const loadBookStatus = async () => {
@@ -22,74 +21,59 @@ const BookRentStatusChart = () => {
         loadBookStatus();
     }, []);
 
-    const data = [
-        {
-            name: '대여',
-            value: rentCnt
+    const data = {
+        labels: ['대여', '미대여'],
+        datasets: [{
+            data: [rentCnt, bookCnt],
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+            ],
+            hoverOffset: 4
+        }]
+    };
+
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false,
+            },
+            datalabels: {
+                formatter: (value, ctx) => {
+                    let sum = 0;
+                    let dataArr = ctx.chart.data.datasets[0].data;
+                    dataArr.map(data => {
+                        sum += data;
+                    });
+                    let percentage = (value * 100 / sum).toFixed(0) + "%";
+                    return percentage;
+                },
+                color: '#fff',
+                font: {
+                    weight: 'bold',
+                    size: 16,
+                }
+            }
         },
-        {
-            name: '미대여',
-            value: bookCnt
-        },
-    ];
-
-    const COLORS = ['#43fa1e', '#25c7bf'];
-
-    const RADIAN = Math.PI / 180;
-
-    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text
-                x={x} y={y}
-                textAnchor="middle"
-                dominantBaseline="central"
-                style={{ fontSize: '16px', fontWeight: 'bold' }}
-            >
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
     };
 
     return (
-        <>
-            <PieChartBind>
-                <PieChartSize>
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie
-                                data={data}
-                                cx="50%"
-                                cy="50%"
-                                labelLine={false}
-                                startAngle={90} // 시작 각도
-                                endAngle={-270} // 끝 각도
-                                label={renderCustomizedLabel}
-                            >
-                                {data.map((entry, index) => (
-                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                ))}
-                            </Pie>
-                        </PieChart>
-                    </ResponsiveContainer>
-                </PieChartSize>
+        <PieChartBind>
+            <PieChartSize>
+                <Pie data={data} options={options} />
+            </PieChartSize>
 
-                <PieChartName>
-                    {data.map((entry, index) => (
-                        <div
-                            style={{
-                                color: COLORS[index % COLORS.length],
-                                fontWeight: 'bold'
-                            }}>
-                            {`${entry.name}`}
-                        </div>
-                    ))}
-                </PieChartName>
-            </PieChartBind>
-        </>
+            <PieChartName>
+                {data.labels.map((label, index) => (
+                    <LegendItem key={index}>
+                        <LegendColor color={data.datasets[0].backgroundColor[index]} />
+                        <LegendLabel>{label}</LegendLabel>
+                    </LegendItem>
+                ))}
+            </PieChartName>
+        </PieChartBind>
     )
 }
 
