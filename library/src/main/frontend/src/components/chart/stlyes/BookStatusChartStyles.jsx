@@ -3,13 +3,18 @@ import styled from "styled-components";
 export const PieChartBind = styled.div`
     width: 33%;
     display: flex;
+    align-items: center;
     flex-direction: column;
     border-right: 2px solid black;
 `
 
 export const PieChartSize = styled.div`
-    width: 100%;
+    width: 80%;
     height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 `
 
 export const PieChartName = styled.div`
