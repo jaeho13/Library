@@ -25,9 +25,13 @@ public class BookService {
     @Autowired
     private LiUserInfoRepository liUserInfoRepository;
 
-    public Map<String, Object> findBookList() {
+    public Map<String, Object> findBookList(String param) {
         Map<String, Object> map = new HashMap<>();
         try {
+            if (!"".equals(param) || !param.isEmpty()) {
+                map.put("bookList", liBookInfoRepository.searchBook(param));
+                map.put("bookCnt", liBookInfoRepository.countSearchBook(param));
+            }
             map.put("bookList", liBookInfoRepository.selectBook());
             map.put("bookCnt", liBookInfoRepository.countBook());
         } catch (Exception e) {

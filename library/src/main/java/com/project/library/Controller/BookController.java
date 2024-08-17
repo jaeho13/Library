@@ -7,6 +7,7 @@ import jakarta.persistence.PreUpdate;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,10 +22,11 @@ public class BookController {
     private BookService bookService;
 
     final String bookUrl = "/book";
+
     //책 리스트
     @GetMapping(bookUrl + "/findBookList")
-    public Map<String,Object> findBookList() {
-        Map<String,Object> map = bookService.findBookList();
+    public Map<String,Object> findBookList(@RequestParam String param) {
+        Map<String,Object> map = bookService.findBookList(param);
 
         return map;
     }
