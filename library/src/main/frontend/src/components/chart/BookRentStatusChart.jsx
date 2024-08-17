@@ -26,8 +26,8 @@ const BookRentStatusChart = () => {
         datasets: [{
             data: [rentCnt, bookCnt],
             backgroundColor: [
-                '#ff6384',
-                '#36a2eb',
+                '#77E4C8',
+                '#a0b3f8',
             ],
             hoverOffset: 4
         }]

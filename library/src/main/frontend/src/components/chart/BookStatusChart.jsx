@@ -38,75 +38,22 @@ const BookStatusChart = () => {
         loadBookGenre();
     }, [])
 
-    // const data = [
-    //     {
-    //         name: '예술',
-    //         value: art
-    //     },
-    //     {
-    //         name: '인문',
-    //         value: humanities
-    //     },
-    //     {
-    //         name: '여행',
-    //         value: trip
-    //     },
-    //     {
-    //         name: '과학',
-    //         value: science
-    //     },
-    //     {
-    //         name: '에세이',
-    //         value: essay
-    //     },
-    //     {
-    //         name: '경제',
-    //         value: economy
-    //     },
-    //     {
-    //         name: '소설',
-    //         value: novel
-    //     },
-    // ];
-
     const data = {
         labels: ['예술', '인문', '여행', '과학', '에세이', '경제', '소설'],
         datasets: [{
             data: [art, humanities, trip, science, essay, economy, novel],
             backgroundColor: [
-                '#0088FE',
-                '#FF8042',
-                '#FFBB28',
-                '#C5BCA9',
-                '#E63030',
-                '#1cdf84',
-                '#942aeb',
+                '#ADE1E5',
+                '#99D19C',
+                '#BBCE8A',
+                '#FFDA76',
+                '#E5BE9E',
+                '#5B99C2',
+                '#949BA0',
             ],
             hoverOffset: 4
         }]
     }
-
-    // const COLORS = ['#0088FE', '#FF8042', '#FFBB28', '#C5BCA9', '#E63030', '#1cdf84', '#942aeb'];
-
-    // const RADIAN = Math.PI / 180;
-
-
-    // const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    //     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    //     const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    //     const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-    //     return (
-    //         <text
-    //             x={x} y={y}
-    //             textAnchor="middle"
-    //             dominantBaseline="central"
-    //             style={{ fontSize: '16px', fontWeight: 'bold' }}
-    //         >
-    //             {`${(percent * 100).toFixed(0)}%`}
-    //         </text>
-    //     );
-    // };
 
     const options = {
         responsive: true,
