@@ -5,8 +5,9 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import RemoveModal from "../modal/RemoveModal";
 import AddModal from "../modal/AddModal";
-import { BoardBind, BookInfoBind, BookManage, BookAdd, BookRemove, ColorListBind, BookColorList, BookColorListinfo, BookInfoListHeader, BookInfoList, BookCheck, BookTitle, BookWriter, BookGenre, BookDate, PaginationContainer } from "./stlyes/LibraryBookStatusStyle"
+import { BoardBind, BookInfoBind, BookManage, BookAdd, BookRemove, ColorListBind, BookColorList, BookColorListinfo, BookInfoListHeader, BookInfoList, BookCheck, BookTitle, BookWriter, BookGenre, BookDate, PaginationContainer, BookSearchConfirm, BookSearch } from "./stlyes/LibraryBookStatusStyle"
 import SessionCheck from "../routes/SessionCheck";
+import styled from "styled-components";
 
 const LibraryBookStatus = () => {
 
@@ -69,7 +70,7 @@ const LibraryBookStatus = () => {
 
     const bookListUpdate = async () => {
         try {
-            const response = await axios.get("/book/findBookList");
+            const response = await axios.get(`/book/findBookList?param=`);
             setBookList(response.data.bookList);
             console.log("책 리스트 데이터 갱신됨");
         } catch (error) {
@@ -90,6 +91,8 @@ const LibraryBookStatus = () => {
                     <BookManage>
                         <BookAdd onClick={bookAddModal} type="book">도서 추가</BookAdd>
                         <BookRemove onClick={bookRemoveModal}>도서 삭제</BookRemove>
+                        <BookSearch />
+                        <BookSearchConfirm>검색</BookSearchConfirm>
                         <ColorListBind>
                             <BookColorList />
                             <BookColorListinfo> : 대여 도서</BookColorListinfo>

@@ -40,10 +40,33 @@ export const BookRemove = styled.div`
     margin-left: 2%;
 `
 
-export const ColorListBind = styled.div`
-    width: 75%;
+
+export const BookSearch = styled.input`
+    width: 30%;
+    height: 5vh;
+    border: 2px solid black;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+    font-size: 20px;
+`
+
+export const BookSearchConfirm = styled.div`
+    width: 10%;
+    height: 5vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+`
+
+export const ColorListBind = styled.div`
+    width: 15%;
+    min-width: 100px;
+    display: flex;
+    margin-left: auto;
 `
 
 
