@@ -28,12 +28,14 @@ public class BookService {
     public Map<String, Object> findBookList(String param) {
         Map<String, Object> map = new HashMap<>();
         try {
-            if (!"".equals(param) || !param.isEmpty()) {
-                map.put("bookList", liBookInfoRepository.searchBook(param));
-                map.put("bookCnt", liBookInfoRepository.countSearchBook(param));
+            if (param != null && !param.trim().isEmpty()) {
+                String searchParam = "%" + param + "%";  // 와일드카드 추가!!!!
+                map.put("bookList", liBookInfoRepository.searchBook(searchParam));
+                map.put("bookCnt", liBookInfoRepository.countSearchBook(searchParam));
+            } else {
+                map.put("bookList", liBookInfoRepository.selectBook());
+                map.put("bookCnt", liBookInfoRepository.countBook());
             }
-            map.put("bookList", liBookInfoRepository.selectBook());
-            map.put("bookCnt", liBookInfoRepository.countBook());
         } catch (Exception e) {
             System.err.println("Exception : " + e.getMessage());
             throw e;
