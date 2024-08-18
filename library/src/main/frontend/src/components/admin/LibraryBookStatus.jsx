@@ -107,6 +107,7 @@ const LibraryBookStatus = () => {
                         <BookAdd onClick={bookAddModal} type="book">도서 추가</BookAdd>
                         <BookRemove onClick={bookRemoveModal}>도서 삭제</BookRemove>
                         <BookSearch
+                            placeholder="책 제목을 검색하세요."
                             onChange={(e) => {
                                 setSearch(e.target.value);
                             }}

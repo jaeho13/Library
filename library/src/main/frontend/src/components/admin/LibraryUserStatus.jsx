@@ -96,6 +96,7 @@ const LibraryUserStatus = () => {
                         <UserAdd onClick={userAddModal} type="user">회원 추가</UserAdd>
                         <UserRemove onClick={userRemoveModal}>회원 삭제</UserRemove>
                         <UserSearch
+                            placeholder="회원을 검색하세요."
                             onChange={(e) => {
                                 setSearch(e.target.value);
                             }}
