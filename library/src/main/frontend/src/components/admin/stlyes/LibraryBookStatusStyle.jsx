@@ -28,6 +28,7 @@ export const BookAdd = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: 2%;
+    cursor: pointer;
 `
 
 export const BookRemove = styled.div`
@@ -38,6 +39,7 @@ export const BookRemove = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: 2%;
+    cursor: pointer;
 `
 
 
@@ -60,6 +62,7 @@ export const BookSearchConfirm = styled.div`
     justify-content: center;
     align-items: center;
     margin-left: 2%;
+    cursor: pointer;
 `
 
 export const ColorListBind = styled.div`
