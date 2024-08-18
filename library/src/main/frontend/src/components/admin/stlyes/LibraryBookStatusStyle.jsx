@@ -42,7 +42,6 @@ export const BookRemove = styled.div`
     cursor: pointer;
 `
 
-
 export const BookSearch = styled.input`
     width: 30%;
     height: 5vh;

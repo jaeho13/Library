@@ -24,7 +24,7 @@ const LibraryBookStatus = () => {
     useEffect(() => {
         const bookListLoad = async () => {
             try {
-                const response = await axios.get("/book/findBookList");
+                const response = await axios.get(`/book/findBookList?param=`);
                 setBookList(response.data.bookList);
                 console.log("책 리스트 데이터 들어왔다");
             } catch (error) {
@@ -78,6 +78,21 @@ const LibraryBookStatus = () => {
         }
     };
 
+    const [search, setSearch] = useState("");
+
+    const bookSearch = () => {
+        const bookListLoad = async () => {
+            try {
+                const response = await axios.get(`/book/findBookList?param=${search}`);
+                setBookList(response.data.bookList);
+                console.log("책 리스트 데이터 들어왔다");
+            } catch (error) {
+                console.log("책 리스트 데이터 안 들어왔다");
+            }
+        };
+        bookListLoad();
+    }
+
     return (
         <>
             <SessionCheck />
@@ -91,8 +106,13 @@ const LibraryBookStatus = () => {
                     <BookManage>
                         <BookAdd onClick={bookAddModal} type="book">도서 추가</BookAdd>
                         <BookRemove onClick={bookRemoveModal}>도서 삭제</BookRemove>
-                        <BookSearch />
-                        <BookSearchConfirm>검색</BookSearchConfirm>
+                        <BookSearch
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                        />
+                        <BookSearchConfirm onClick={bookSearch}>검색</BookSearchConfirm>
+
                         <ColorListBind>
                             <BookColorList />
                             <BookColorListinfo> : 대여 도서</BookColorListinfo>
