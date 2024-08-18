@@ -19,10 +19,18 @@ public class UserService {
     @Autowired
     private LiUserInfoRepository liUserInfoRepository;
 
-    public Map<String, Object> findUserList() {
+    public Map<String, Object> findUserList(String param) {
         Map<String, Object> map = new HashMap<>();
-        List<LiUserInfo> userList = liUserInfoRepository.findUserList();
-        map.put("userList", userList);
+        List<LiUserInfo> userList = new ArrayList<>();
+        if (param != null && !param.trim().isEmpty()) {
+            String searchParam = "%" + param + "%";  // 와일드카드 추가!!!!
+            userList = liUserInfoRepository.searchUser(param);
+            map.put("userList", userList);
+        } else {
+            userList = liUserInfoRepository.findUserList();
+            map.put("userList", userList);
+
+        }
         map.put("userCnt", userList.size());
 
         return map;

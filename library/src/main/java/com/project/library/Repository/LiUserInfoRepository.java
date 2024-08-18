@@ -33,4 +33,7 @@ public interface LiUserInfoRepository extends JpaRepository<LiUserInfo, Long> {
 
     @Query(value = "SELECT * FROM LI_USER_INFO WHERE USER_KEY = :userKey", nativeQuery = true)
     LiUserInfo findUserInfo(@Param(value = "userKey")Long userKey);
+
+    @Query(value = "SELECT * FROM LI_USER_INFO WHERE NAME = :name", nativeQuery = true)
+    List<LiUserInfo> searchUser(@Param(value = "name") String param);
 }
