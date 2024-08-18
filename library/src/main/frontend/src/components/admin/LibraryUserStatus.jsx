@@ -72,7 +72,7 @@ const LibraryUserStatus = () => {
     const userSearch = () => {
         const userListLoad = async () => {
             try {
-                const response = await axios.get("/user/findUserList");
+                const response = await axios.get(`/user/findUserList?param=${search}`);
                 setUserList(response.data.userList);
                 console.log("유저 리스트 데이터 들어왔다");
             } catch (error) {
