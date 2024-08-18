@@ -39,6 +39,28 @@ export const UserRemove = styled.div`
     margin-left: 2%;
 `
 
+export const UserSearch = styled.input`
+    width: 30%;
+    height: 5vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+    font-size: 20px;
+`
+
+export const UserSearchConfirm = styled.div`
+    width: 10%;
+    height: 5vh;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2%;
+    cursor: pointer;
+`
+
 export const UserListHeader = styled.div`
     height: 5vh;
     display: flex;

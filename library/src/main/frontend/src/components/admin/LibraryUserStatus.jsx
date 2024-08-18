@@ -5,7 +5,7 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import AddModal from "../modal/AddModal";
 import RemoveModal from "../modal/RemoveModal";
-import { BoardBind, UserListBind, UserManage, UserAdd, UserRemove, UserListHeader, UserList, UserCheck, UserNumber, UserId, UserName, UserSex, UserAge, PaginationContainer } from "./stlyes/LibraryUserStatusStyle"
+import { BoardBind, UserListBind, UserManage, UserAdd, UserRemove, UserListHeader, UserList, UserCheck, UserNumber, UserId, UserName, UserSex, UserAge, PaginationContainer, UserSearchConfirm, UserSearch } from "./stlyes/LibraryUserStatusStyle"
 import SessionCheck from "../routes/SessionCheck";
 
 const LibraryUserStatus = () => {
@@ -21,7 +21,7 @@ const LibraryUserStatus = () => {
     useEffect(() => {
         const userListLoad = async () => {
             try {
-                const response = await axios.get("/user/findUserList");
+                const response = await axios.get(`/user/findUserList?param=`);
                 setUserList(response.data.userList);
                 console.log("유저 리스트 데이터 들어왔다");
             } catch (error) {
@@ -59,13 +59,28 @@ const LibraryUserStatus = () => {
 
     const userListUpdate = async () => {
         try {
-            const response = await axios.get("/user/findUserList");
+            const response = await axios.get(`/user/findUserList?param=`);
             setUserList(response.data.userList);
             console.log("유저 리스트 데이터 갱신됨");
         } catch (error) {
             console.log("유저 리스트 데이터 갱신 실패");
         }
     };
+
+    const [search, setSearch] = useState("");
+
+    const userSearch = () => {
+        const userListLoad = async () => {
+            try {
+                const response = await axios.get(`/user/findUserList?param=${search}`);
+                setUserList(response.data.userList);
+                console.log("유저 리스트 데이터 들어왔다");
+            } catch (error) {
+                console.log("유저 리스트 데이터 안 들어왔다");
+            }
+        };
+        userListLoad();
+    }
 
     return (
         <>
@@ -80,6 +95,13 @@ const LibraryUserStatus = () => {
                     <UserManage>
                         <UserAdd onClick={userAddModal} type="user">회원 추가</UserAdd>
                         <UserRemove onClick={userRemoveModal}>회원 삭제</UserRemove>
+                        <UserSearch
+                            placeholder="회원을 검색하세요."
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                        />
+                        <UserSearchConfirm onClick={userSearch}>검색</UserSearchConfirm>
                     </UserManage>
 
                     <UserListHeader>
