@@ -21,17 +21,16 @@ public class UserService {
 
     public Map<String, Object> findUserList(String name) {
         Map<String, Object> map = new HashMap<>();
-        List<LiUserInfo> userList = new ArrayList<>();
+
         if (name != null && !name.trim().isEmpty()) {
             String searchParam = "%" + name + "%";  // 와일드카드 추가!!!!
-            userList = liUserInfoRepository.searchUser(searchParam);
+            List<LiUserInfo> userList = liUserInfoRepository.searchUser(searchParam);
             map.put("userList", userList);
+            map.put("userCnt", userList.size());
         } else {
-            userList = liUserInfoRepository.findUserList();
-            map.put("userList", userList);
-
+            map.put("userList", liUserInfoRepository.findUserList());
+            map.put("userCnt", liUserInfoRepository.countUserCnt());
         }
-        map.put("userCnt", userList.size());
 
         return map;
     }
