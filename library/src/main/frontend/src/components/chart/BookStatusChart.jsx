@@ -62,25 +62,8 @@ const BookStatusChart = () => {
             legend: {
                 display: false,
             },
-            datalabels: {
-                formatter: (value, ctx) => {
-                    let sum = 0;
-                    let dataArr = ctx.chart.data.datasets[0].data;
-                    dataArr.map(data => {
-                        sum += data;
-                    });
-                    let percentage = (value * 100 / sum).toFixed(0) + "%";
-                    return percentage;
-                },
-                color: '#fff',
-                font: {
-                    weight: 'bold',
-                    size: 16,
-                }
-            }
         },
     };
-
 
     return (
         <>

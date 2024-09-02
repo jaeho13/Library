@@ -44,7 +44,6 @@ const Login = () => {
                 </LibraryLogo>
                 <AccountCheck>
                     <InputBind>
-
                         <IdBind>
                             <IdName>
                                 아이디
@@ -71,7 +70,6 @@ const Login = () => {
                                 onKeyDown={enterMove}
                             />
                         </PasswordBind>
-
                     </InputBind>
 
                     <IdCheck onClick={checkLogin}>
