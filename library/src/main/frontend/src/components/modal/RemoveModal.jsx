@@ -29,6 +29,7 @@ const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
             console.log("도서 정보 삭제 성공");
             onDataRemoved();
             onClose();
+            window.location.reload();
         } catch (error) {
             alert("도서 정보 삭제 실패");
             onClose();
@@ -55,6 +56,7 @@ const RemoveModal = ({ onClose, type, checkedList, onDataRemoved }) => {
             console.log("유저 정보 삭제 성공");
             onDataRemoved();
             onClose();
+            window.location.reload();
         } catch (error) {
             alert("유저 정보 삭제 실패");
             onClose();
