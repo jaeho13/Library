@@ -48,7 +48,6 @@
 
 ### 회원 추가 모달
 ![modal](https://github.com/user-attachments/assets/c874cd6a-7685-4e86-afd4-5c55d2f2f09c)
-
 <br />
 
 ## 🚀 느낀점
