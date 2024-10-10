@@ -39,7 +39,7 @@
 ### 유즈케이스 설계
 <br />
 
-<img width="314" alt="스크린샷 2024-10-10 오후 11 42 00" src="https://github.com/user-attachments/assets/de66e5d1-b28f-4900-a07f-fd56b664d7fe">
+<img width="317" alt="스크린샷 2024-10-10 오후 11 50 10" src="https://github.com/user-attachments/assets/2f33f27c-bfa9-4493-9b4f-63d6faf5d56f">
 
 <br />
 
